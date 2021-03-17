@@ -92,7 +92,7 @@ export default {
 
         card.mount("#card-element")
 
-        this.getSetupIntent()
+        // this.getSetupIntent()
       }
     },
   },
