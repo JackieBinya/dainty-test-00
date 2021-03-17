@@ -1,0 +1,278 @@
+{
+  "FooterSection": {
+    "description": "Auto imported from /components/footer-section.vue"
+  },
+  "LazyFooterSection": {
+    "description": "Auto imported from /components/footer-section.vue"
+  },
+  "HeaderSection": {
+    "description": "Auto imported from /components/header-section.vue"
+  },
+  "LazyHeaderSection": {
+    "description": "Auto imported from /components/header-section.vue"
+  },
+  "Loader": {
+    "description": "Auto imported from /components/loader.vue"
+  },
+  "LazyLoader": {
+    "description": "Auto imported from /components/loader.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from /components/logo.vue"
+  },
+  "LazyLogo": {
+    "description": "Auto imported from /components/logo.vue"
+  },
+  "PricingTable": {
+    "description": "Auto imported from /components/pricing-table.vue"
+  },
+  "LazyPricingTable": {
+    "description": "Auto imported from /components/pricing-table.vue"
+  },
+  "Testimomials": {
+    "description": "Auto imported from /components/testimomials.vue"
+  },
+  "LazyTestimomials": {
+    "description": "Auto imported from /components/testimomials.vue"
+  },
+  "AboutBody": {
+    "description": "Auto imported from /components/about/about-body.vue"
+  },
+  "LazyAboutBody": {
+    "description": "Auto imported from /components/about/about-body.vue"
+  },
+  "AboutHeader": {
+    "description": "Auto imported from /components/about/about-header.vue"
+  },
+  "LazyAboutHeader": {
+    "description": "Auto imported from /components/about/about-header.vue"
+  },
+  "AboutInfo": {
+    "description": "Auto imported from /components/about/about-info.vue"
+  },
+  "LazyAboutInfo": {
+    "description": "Auto imported from /components/about/about-info.vue"
+  },
+  "AboutStarted": {
+    "description": "Auto imported from /components/about/about-started.vue"
+  },
+  "LazyAboutStarted": {
+    "description": "Auto imported from /components/about/about-started.vue"
+  },
+  "AboutTerms": {
+    "description": "Auto imported from /components/about/about-terms.vue"
+  },
+  "LazyAboutTerms": {
+    "description": "Auto imported from /components/about/about-terms.vue"
+  },
+  "AboutValues": {
+    "description": "Auto imported from /components/about/about-values.vue"
+  },
+  "LazyAboutValues": {
+    "description": "Auto imported from /components/about/about-values.vue"
+  },
+  "CollapseButton": {
+    "description": "Auto imported from /components/about/collapse-button.vue"
+  },
+  "LazyCollapseButton": {
+    "description": "Auto imported from /components/about/collapse-button.vue"
+  },
+  "BannerSection": {
+    "description": "Auto imported from /components/home/banner-section.vue"
+  },
+  "LazyBannerSection": {
+    "description": "Auto imported from /components/home/banner-section.vue"
+  },
+  "CallToAction": {
+    "description": "Auto imported from /components/home/call-to-action.vue"
+  },
+  "LazyCallToAction": {
+    "description": "Auto imported from /components/home/call-to-action.vue"
+  },
+  "FeaturesSection": {
+    "description": "Auto imported from /components/home/features-section.vue"
+  },
+  "LazyFeaturesSection": {
+    "description": "Auto imported from /components/home/features-section.vue"
+  },
+  "MediaSection": {
+    "description": "Auto imported from /components/home/media-section.vue"
+  },
+  "LazyMediaSection": {
+    "description": "Auto imported from /components/home/media-section.vue"
+  },
+  "PortfolioExamples": {
+    "description": "Auto imported from /components/home/portfolio-examples.vue"
+  },
+  "LazyPortfolioExamples": {
+    "description": "Auto imported from /components/home/portfolio-examples.vue"
+  },
+  "PricingCards": {
+    "description": "Auto imported from /components/home/pricing-cards.vue"
+  },
+  "LazyPricingCards": {
+    "description": "Auto imported from /components/home/pricing-cards.vue"
+  },
+  "ServicesSection": {
+    "description": "Auto imported from /components/home/services-section.vue"
+  },
+  "LazyServicesSection": {
+    "description": "Auto imported from /components/home/services-section.vue"
+  },
+  "PortfolioBody": {
+    "description": "Auto imported from /components/portfolio/portfolio-body.vue"
+  },
+  "LazyPortfolioBody": {
+    "description": "Auto imported from /components/portfolio/portfolio-body.vue"
+  },
+  "PortfolioHeader": {
+    "description": "Auto imported from /components/portfolio/portfolio-header.vue"
+  },
+  "LazyPortfolioHeader": {
+    "description": "Auto imported from /components/portfolio/portfolio-header.vue"
+  },
+  "CheckoutButton": {
+    "description": "Auto imported from /components/pricing/checkout-button.vue"
+  },
+  "LazyCheckoutButton": {
+    "description": "Auto imported from /components/pricing/checkout-button.vue"
+  },
+  "GetStarted": {
+    "description": "Auto imported from /components/pricing/get-started.vue"
+  },
+  "LazyGetStarted": {
+    "description": "Auto imported from /components/pricing/get-started.vue"
+  },
+  "PricingCardsV2": {
+    "description": "Auto imported from /components/pricing/pricing-cards-v2.vue"
+  },
+  "LazyPricingCardsV2": {
+    "description": "Auto imported from /components/pricing/pricing-cards-v2.vue"
+  },
+  "PricingDiscount": {
+    "description": "Auto imported from /components/pricing/pricing-discount.vue"
+  },
+  "LazyPricingDiscount": {
+    "description": "Auto imported from /components/pricing/pricing-discount.vue"
+  },
+  "PricingSupport": {
+    "description": "Auto imported from /components/pricing/pricing-support.vue"
+  },
+  "LazyPricingSupport": {
+    "description": "Auto imported from /components/pricing/pricing-support.vue"
+  },
+  "Services": {
+    "description": "Auto imported from /components/pricing/services.vue"
+  },
+  "LazyServices": {
+    "description": "Auto imported from /components/pricing/services.vue"
+  },
+  "SubscriptionPrice": {
+    "description": "Auto imported from /components/pricing/subscription-price.vue"
+  },
+  "LazySubscriptionPrice": {
+    "description": "Auto imported from /components/pricing/subscription-price.vue"
+  },
+  "IgIcon": {
+    "description": "Auto imported from /components/social-icons/ig-icon.vue"
+  },
+  "LazyIgIcon": {
+    "description": "Auto imported from /components/social-icons/ig-icon.vue"
+  },
+  "LinkedinIcon": {
+    "description": "Auto imported from /components/social-icons/linkedin-icon.vue"
+  },
+  "LazyLinkedinIcon": {
+    "description": "Auto imported from /components/social-icons/linkedin-icon.vue"
+  },
+  "TwitterIcon": {
+    "description": "Auto imported from /components/social-icons/twitter-icon.vue"
+  },
+  "LazyTwitterIcon": {
+    "description": "Auto imported from /components/social-icons/twitter-icon.vue"
+  },
+  "ContactSection": {
+    "description": "Auto imported from /components/team/contact-section.vue"
+  },
+  "LazyContactSection": {
+    "description": "Auto imported from /components/team/contact-section.vue"
+  },
+  "SectionHeader": {
+    "description": "Auto imported from /components/team/section-header.vue"
+  },
+  "LazySectionHeader": {
+    "description": "Auto imported from /components/team/section-header.vue"
+  },
+  "TeamList": {
+    "description": "Auto imported from /components/team/team-list.vue"
+  },
+  "LazyTeamList": {
+    "description": "Auto imported from /components/team/team-list.vue"
+  },
+  "TeamMemberCard": {
+    "description": "Auto imported from /components/team/team-member-card.vue"
+  },
+  "LazyTeamMemberCard": {
+    "description": "Auto imported from /components/team/team-member-card.vue"
+  },
+  "TeamMember": {
+    "description": "Auto imported from /components/team/team-member.vue"
+  },
+  "LazyTeamMember": {
+    "description": "Auto imported from /components/team/team-member.vue"
+  },
+  "TeamSwiper": {
+    "description": "Auto imported from /components/team/team-swiper.vue"
+  },
+  "LazyTeamSwiper": {
+    "description": "Auto imported from /components/team/team-swiper.vue"
+  },
+  "CheckIcon": {
+    "description": "Auto imported from /components/home/plans/check-icon.vue"
+  },
+  "LazyCheckIcon": {
+    "description": "Auto imported from /components/home/plans/check-icon.vue"
+  },
+  "CrossIcon": {
+    "description": "Auto imported from /components/home/plans/cross-icon.vue"
+  },
+  "LazyCrossIcon": {
+    "description": "Auto imported from /components/home/plans/cross-icon.vue"
+  },
+  "Heading": {
+    "description": "Auto imported from /components/home/reviews/heading.vue"
+  },
+  "LazyHeading": {
+    "description": "Auto imported from /components/home/reviews/heading.vue"
+  },
+  "ReviewContent": {
+    "description": "Auto imported from /components/home/reviews/review-content.vue"
+  },
+  "LazyReviewContent": {
+    "description": "Auto imported from /components/home/reviews/review-content.vue"
+  },
+  "Reviews": {
+    "description": "Auto imported from /components/home/reviews/reviews.vue"
+  },
+  "LazyReviews": {
+    "description": "Auto imported from /components/home/reviews/reviews.vue"
+  },
+  "Star": {
+    "description": "Auto imported from /components/home/reviews/star.vue"
+  },
+  "LazyStar": {
+    "description": "Auto imported from /components/home/reviews/star.vue"
+  },
+  "Field": {
+    "description": "Auto imported from /components/pricing/pre-checkout/field.vue"
+  },
+  "LazyField": {
+    "description": "Auto imported from /components/pricing/pre-checkout/field.vue"
+  },
+  "Toggle": {
+    "description": "Auto imported from /components/pricing/pre-checkout/toggle.vue"
+  },
+  "LazyToggle": {
+    "description": "Auto imported from /components/pricing/pre-checkout/toggle.vue"
+  }
+}
