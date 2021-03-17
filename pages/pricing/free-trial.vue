@@ -77,7 +77,7 @@ export default {
         })
         .then(function (result) {
           console.log(result)
-          // this.setupIntent = result
+          this.setupIntent = result
         })
     },
   },
