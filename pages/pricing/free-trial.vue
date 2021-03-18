@@ -99,6 +99,10 @@ export default {
       })
     },
     updateCustomerEmail({ customer: id }, email) {
+      console.log("============================")
+      console.log({ id })
+      console.log({ email })
+      console.log("=================================")
       return fetch(`/api/customers/${id}`, {
         method: "post",
         headers: {
