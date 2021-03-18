@@ -13,8 +13,16 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
-    { "source": "/pricing/free-trial", "destination": "/api/create-setup-intent" },
-    { "source": "/pricing/free-trial", "destination": "/api/hello-world" }
-  ]
+  "headers": [
+    {
+      "source": "/api/create-setup-intent",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    }
+  ],
+  "rewrites": [{ "source": "/api/create-setup-intent", "destination": "/api/create-setup-intent" }]
 }
