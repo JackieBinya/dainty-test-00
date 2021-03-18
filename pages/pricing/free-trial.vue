@@ -50,37 +50,61 @@ export default {
     }
   },
   methods: {
-    async handleSubmit() {
-      const res = await fetch("/api/create-setup-intent", {
+    handleSubmit() {
+      fetch("/api/create-setup-intent", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
         },
       })
-
-      const setupIntent = res.json()
-
-      console.log("============================================")
-      console.log(setupIntent)
-      console.log("============================================")
-
-      await this.stripe
-        .confirmCardSetup(setupIntent.client_secret, {
-          payment_method: {
-            card: this.card,
-            billing_details: { email: this.email },
-          },
+        .then((res) => {
+          return res.json
         })
-        .then(function (result) {
-          if (result.error) {
-            // changeLoadingState(false)
-            var displayError = document.getElementById("card-errors")
-            displayError.textContent = result.error.message
-          } else {
-            // The PaymentMethod was successfully set up
-            orderComplete(this.setupIntent.client_secret)
-          }
+        .then((setupIntent) => {
+          console.log(setupIntent)
+
+          this.stripe
+            .confirmCardSetup(setupIntent.client_secret, {
+              payment_method: {
+                card: this.card,
+                billing_details: { email: this.email },
+              },
+            })
+            .then(function (result) {
+              if (result.error) {
+                // changeLoadingState(false)
+                var displayError = document.getElementById("card-errors")
+                displayError.textContent = result.error.message
+              } else {
+                // The PaymentMethod was successfully set up
+                orderComplete(this.setupIntent.client_secret)
+              }
+            })
         })
+
+      // const setupIntent = res.json()
+
+      // console.log("============================================")
+      // console.log(setupIntent)
+      // console.log("============================================")
+
+      // this.stripe
+      //   .confirmCardSetup(setupIntent.client_secret, {
+      //     payment_method: {
+      //       card: this.card,
+      //       billing_details: { email: this.email },
+      //     },
+      //   })
+      //   .then(function (result) {
+      //     if (result.error) {
+      //       // changeLoadingState(false)
+      //       var displayError = document.getElementById("card-errors")
+      //       displayError.textContent = result.error.message
+      //     } else {
+      //       // The PaymentMethod was successfully set up
+      //       orderComplete(this.setupIntent.client_secret)
+      //     }
+      //   })
     },
     getSetupIntent() {
       return fetch("/api/create-setup-intent", {
