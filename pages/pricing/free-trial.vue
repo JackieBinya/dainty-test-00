@@ -50,52 +50,79 @@ export default {
     }
   },
   methods: {
-    handleSubmit() {
-      fetch("/api/create-setup-intent", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
+    async handleSubmit() {
+      const res = await this.getSetupIntent()
+
+      const setupIntent = res.json()
+      console.log({ setupIntent })
+
+      const confirmationResult = await this.stripe.confirmCardSetup(setupIntent.client_secret, {
+        payment_method: {
+          card: this.card,
+          billing_details: { email: this.email },
         },
       })
-        .then((res) => {
-          return res.json()
-        })
-        .then((setupIntent) => {
-          console.log(setupIntent)
+      console.log({ confirmationResult })
 
-          this.stripe
-            .confirmCardSetup(setupIntent.client_secret, {
-              payment_method: {
-                card: this.card,
-                billing_details: { email: this.email },
-              },
-            })
-            .then(function (result) {
-              if (result.error) {
-                // changeLoadingState(false)
-                var displayError = document.getElementById("card-errors")
-                displayError.textContent = result.error.message
-              } else {
-                // The PaymentMethod was successfully set up
-                // this.orderComplete(setupIntent.client_secret)
-                console.log(setupIntent.customer)
-                document.querySelector(".sr-result").classList.remove("hidden")
-                fetch("/api/subscriptions", {
-                  method: "post",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({ customer: setupIntent.customer }),
-                })
-                  .then((res) => res.json())
-                  .then((result) => {
-                    if (result.status === "success") {
-                      console.log("Hello World")
-                    }
-                  })
-              }
-            })
-        })
+      if (confirmationResult.error) {
+        // changeLoadingState(false)
+        var displayError = document.getElementById("card-errors")
+        displayError.textContent = result.error.message
+      } else {
+        document.querySelector(".sr-result").classList.remove("hidden")
+        const res = await this.subscribeFreeTrial(setupIntent)
+        const { status } = await res.json()
+        if (status === "success") {
+          console.log("The user is successfully subbed")
+        }
+      }
+
+      // const email = this.email
+      // fetch("/api/create-setup-intent", {
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // })
+      // .then((res) => {
+      //   return res.json()
+      // })
+      // .then((setupIntent) => {
+      //   console.log(setupIntent)
+
+      //   this.stripe
+      //     .confirmCardSetup(setupIntent.client_secret, {
+      //       payment_method: {
+      //         card: this.card,
+      //         billing_details: {email},
+      //       },
+      //     })
+      //     .then(function (result) {
+      //       if (result.error) {
+      //         // changeLoadingState(false)
+      //         var displayError = document.getElementById("card-errors")
+      //         displayError.textContent = result.error.message
+      //       } else {
+      //         // The PaymentMethod was successfully set up
+      //         // this.orderComplete(setupIntent.client_secret)
+      //         console.log(setupIntent.customer)
+      //         document.querySelector(".sr-result").classList.remove("hidden")
+      //         fetch("/api/subscriptions", {
+      //           method: "post",
+      //           headers: {
+      //             "Content-Type": "application/json",
+      //           },
+      //           body: JSON.stringify({ customer: setupIntent.customer }),
+      //         })
+      //           .then((res) => res.json())
+      //           .then((result) => {
+      //             if (result.status === "success") {
+      //               console.log("Hello World")
+      //             }
+      //           })
+      //       }
+      //     })
+      // })
 
       // const setupIntent = res.json()
 
@@ -131,13 +158,22 @@ export default {
           "Content-Type": "application/json",
         },
       })
-        .then(function (response) {
-          return response.json()
-        })
-        .then(function (result) {
-          console.log(result)
-          this.setupIntent = result
-        })
+      //   .then(function (response) {
+      //     return response.json()
+      //   })
+      //   .then(function (result) {
+      //     console.log(result)
+      //     this.setupIntent = result
+      //   })
+    },
+    subscribeFreeTrial({ customer }) {
+      return fetch("/api/subscriptions", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ customer }),
+      })
     },
     orderComplete(clientSecret) {
       console.log("===============================")
@@ -156,8 +192,6 @@ export default {
         this.card = elements.create("card")
 
         this.card.mount("#card-element")
-
-        // this.getSetupIntent()
       }
     },
   },
