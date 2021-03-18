@@ -70,7 +70,7 @@ export default {
         displayError.textContent = result.error.message
       } else {
         document.querySelector(".sr-result").classList.remove("hidden")
-        await this.updateCustomerEmail(setupIntent, email)
+        await this.updateCustomerEmail(setupIntent, this.email)
         const res = await this.subscribeFreeTrial(setupIntent)
         const { status } = await res.json()
         if (status === "success") {
