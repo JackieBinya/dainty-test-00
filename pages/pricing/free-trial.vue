@@ -99,7 +99,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: this.email }),
       })
 
       this.setupIntent = await res.json()
