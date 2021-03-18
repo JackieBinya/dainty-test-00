@@ -141,23 +141,25 @@ export default {
     isStripeLoaded(newVal, oldVal) {
       if (newVal === true) {
         console.log("Stripe has been loaded")
-        /* eslint-disable-next-line */
-        this.stripe = Stripe(process.env.stripePublishableKey)
-        const elements = this.stripe.elements()
-        this.card = elements.create("card")
+        if (!showFirstStep) {
+          /* eslint-disable-next-line */
+          this.stripe = Stripe(process.env.stripePublishableKey)
+          const elements = this.stripe.elements()
+          this.card = elements.create("card")
 
-        this.card.mount("#card-element")
+          this.card.mount("#card-element")
 
-        // Element focus ring
-        this.card.on("focus", function () {
-          var el = document.getElementById("card-element")
-          el.classList.add("focused")
-        })
+          // Element focus ring
+          this.card.on("focus", function () {
+            var el = document.getElementById("card-element")
+            el.classList.add("focused")
+          })
 
-        this.card.on("blur", function () {
-          var el = document.getElementById("card-element")
-          el.classList.remove("focused")
-        })
+          this.card.on("blur", function () {
+            var el = document.getElementById("card-element")
+            el.classList.remove("focused")
+          })
+        }
       }
     },
   },
