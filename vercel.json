@@ -24,5 +24,8 @@
       ]
     }
   ],
-  "rewrites": [{ "source": "/api/create-setup-intent", "destination": "/api/create-setup-intent" }]
+  "rewrites": [
+    { "source": "/api/create-setup-intent", "destination": "/api/create-setup-intent" },
+    { "source": "/api/subscriptions", "destination": "/api/subscriptions" }
+  ]
 }
