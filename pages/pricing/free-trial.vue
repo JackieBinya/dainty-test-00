@@ -89,7 +89,7 @@ export default {
                 })
                   .then((res) => res.json())
                   .then((result) => {
-                    if (result.status === success) {
+                    if (result.status === "success") {
                       console.log("Hello World")
                     }
                   })
