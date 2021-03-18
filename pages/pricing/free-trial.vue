@@ -78,8 +78,9 @@ export default {
               } else {
                 // The PaymentMethod was successfully set up
                 // this.orderComplete(setupIntent.client_secret)
-                console.log(setupIntent.client_secret)
+                console.log(setupIntent.customer)
                 document.querySelector(".sr-result").classList.remove("hidden")
+                this.helloWorld()
               }
             })
         })
@@ -107,6 +108,9 @@ export default {
       //       orderComplete(this.setupIntent.client_secret)
       //     }
       //   })
+    },
+    helloWorld() {
+      console.log("Hello World")
     },
     getSetupIntent() {
       return fetch("/api/create-setup-intent", {
