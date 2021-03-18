@@ -5,10 +5,9 @@ module.exports = async (req, res) => {
   // The PaymentMethod will be stored to this Customer for later use.
   const customer = await stripe.customers.create()
 
-  // res.send(
-  //   await stripe.setupIntents.create({
-  //     customer: customer.id,
-  //   })
-  // )
-  res.send({ status: "success" })
+  res.send(
+    await stripe.setupIntents.create({
+      customer: customer.id,
+    })
+  )
 }
