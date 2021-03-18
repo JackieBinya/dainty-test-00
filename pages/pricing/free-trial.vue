@@ -70,83 +70,13 @@ export default {
         displayError.textContent = result.error.message
       } else {
         document.querySelector(".sr-result").classList.remove("hidden")
+        await this.updateCustomerEmail(setupIntent, email)
         const res = await this.subscribeFreeTrial(setupIntent)
         const { status } = await res.json()
         if (status === "success") {
           console.log("The user is successfully subbed")
         }
       }
-
-      // const email = this.email
-      // fetch("/api/create-setup-intent", {
-      //   method: "post",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
-      // .then((res) => {
-      //   return res.json()
-      // })
-      // .then((setupIntent) => {
-      //   console.log(setupIntent)
-
-      //   this.stripe
-      //     .confirmCardSetup(setupIntent.client_secret, {
-      //       payment_method: {
-      //         card: this.card,
-      //         billing_details: {email},
-      //       },
-      //     })
-      //     .then(function (result) {
-      //       if (result.error) {
-      //         // changeLoadingState(false)
-      //         var displayError = document.getElementById("card-errors")
-      //         displayError.textContent = result.error.message
-      //       } else {
-      //         // The PaymentMethod was successfully set up
-      //         // this.orderComplete(setupIntent.client_secret)
-      //         console.log(setupIntent.customer)
-      //         document.querySelector(".sr-result").classList.remove("hidden")
-      //         fetch("/api/subscriptions", {
-      //           method: "post",
-      //           headers: {
-      //             "Content-Type": "application/json",
-      //           },
-      //           body: JSON.stringify({ customer: setupIntent.customer }),
-      //         })
-      //           .then((res) => res.json())
-      //           .then((result) => {
-      //             if (result.status === "success") {
-      //               console.log("Hello World")
-      //             }
-      //           })
-      //       }
-      //     })
-      // })
-
-      // const setupIntent = res.json()
-
-      // console.log("============================================")
-      // console.log(setupIntent)
-      // console.log("============================================")
-
-      // this.stripe
-      //   .confirmCardSetup(setupIntent.client_secret, {
-      //     payment_method: {
-      //       card: this.card,
-      //       billing_details: { email: this.email },
-      //     },
-      //   })
-      //   .then(function (result) {
-      //     if (result.error) {
-      //       // changeLoadingState(false)
-      //       var displayError = document.getElementById("card-errors")
-      //       displayError.textContent = result.error.message
-      //     } else {
-      //       // The PaymentMethod was successfully set up
-      //       orderComplete(this.setupIntent.client_secret)
-      //     }
-      //   })
     },
     helloWorld() {
       console.log("Hello World")
@@ -158,13 +88,6 @@ export default {
           "Content-Type": "application/json",
         },
       })
-      //   .then(function (response) {
-      //     return response.json()
-      //   })
-      //   .then(function (result) {
-      //     console.log(result)
-      //     this.setupIntent = result
-      //   })
     },
     subscribeFreeTrial({ customer }) {
       return fetch("/api/subscriptions", {
@@ -175,11 +98,14 @@ export default {
         body: JSON.stringify({ customer }),
       })
     },
-    orderComplete(clientSecret) {
-      console.log("===============================")
-      console.log(clientSecret)
-      console.log("===============================")
-      document.querySelector(".sr-result").classList.remove("hidden")
+    updateCustomerEmail({ customer: id }, email) {
+      return fetch(`/api/customers/${id}`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
     },
   },
   watch: {
@@ -192,6 +118,17 @@ export default {
         this.card = elements.create("card")
 
         this.card.mount("#card-element")
+
+        // Element focus ring
+        this.card.on("focus", function () {
+          var el = document.getElementById("card-element")
+          el.classList.add("focused")
+        })
+
+        this.card.on("blur", function () {
+          var el = document.getElementById("card-element")
+          el.classList.remove("focused")
+        })
       }
     },
   },
