@@ -32,6 +32,7 @@ export default {
       isStripeLoaded: false,
       stripe: "",
       setupIntent: {},
+      card: null,
     }
   },
   head() {
@@ -53,7 +54,7 @@ export default {
       this.stripe
         .confirmCardSetup(this.setupIntent.client_secret, {
           payment_method: {
-            card: card,
+            card: this.card,
             billing_details: { email: this.email },
           },
         })
@@ -83,9 +84,9 @@ export default {
           this.setupIntent = result
         })
     },
-    orderComplete(){
-    document.querySelector(".sr-result").classList.remove("hidden");
-  },
+    orderComplete() {
+      document.querySelector(".sr-result").classList.remove("hidden")
+    },
   },
   watch: {
     isStripeLoaded(newVal, oldVal) {
@@ -94,9 +95,9 @@ export default {
         /* eslint-disable-next-line */
         this.stripe = Stripe(process.env.stripePublishableKey)
         const elements = this.stripe.elements()
-        const card = elements.create("card")
+        this.card = elements.create("card")
 
-        card.mount("#card-element")
+        this.card.mount("#card-element")
 
         this.getSetupIntent()
       }
