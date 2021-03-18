@@ -64,7 +64,7 @@ export default {
       console.log(setupIntent)
       console.log("============================================")
 
-      this.stripe
+      await this.stripe
         .confirmCardSetup(setupIntent.client_secret, {
           payment_method: {
             card: this.card,
