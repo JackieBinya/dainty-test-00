@@ -15,6 +15,9 @@
           <div id="card-errors" role="alert"></div>
           <input type="submit" value="Link your card" />
         </form>
+        <div class="sr-result hidden">
+          <p>Card setup completed<br /></p>
+        </div>
       </div>
     </div>
   </div>
@@ -61,7 +64,7 @@ export default {
             displayError.textContent = result.error.message
           } else {
             // The PaymentMethod was successfully set up
-            orderComplete(stripe, this.setupIntent.client_secret)
+            orderComplete(this.setupIntent.client_secret)
           }
         })
     },
@@ -80,6 +83,8 @@ export default {
           this.setupIntent = result
         })
     },
+    orderComplete(){
+    document.querySelector(".sr-result").classList.remove("hidden");
   },
   watch: {
     isStripeLoaded(newVal, oldVal) {
