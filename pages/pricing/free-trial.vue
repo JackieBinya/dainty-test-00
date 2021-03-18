@@ -70,7 +70,7 @@ export default {
         })
     },
     getSetupIntent() {
-      return fetch("/create-setup-intent", {
+      return fetch("/api/create-setup-intent", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
