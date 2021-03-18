@@ -53,7 +53,7 @@ export default {
     async handleSubmit() {
       const res = await this.getSetupIntent()
 
-      const setupIntent = res.json()
+      const setupIntent = await res.json()
       console.log({ setupIntent })
 
       const confirmationResult = await this.stripe.confirmCardSetup(setupIntent.client_secret, {
