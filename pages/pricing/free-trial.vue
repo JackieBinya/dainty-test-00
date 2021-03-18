@@ -80,7 +80,19 @@ export default {
                 // this.orderComplete(setupIntent.client_secret)
                 console.log(setupIntent.customer)
                 document.querySelector(".sr-result").classList.remove("hidden")
-                this.helloWorld()
+                fetch("/api/subscriptions", {
+                  method: "post",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ customer: setupIntent.customer }),
+                })
+                  .then((res) => res.json())
+                  .then((result) => {
+                    if (result.status === success) {
+                      console.log("Hello World")
+                    }
+                  })
               }
             })
         })
