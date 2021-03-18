@@ -86,6 +86,7 @@ export default {
     orderComplete(){
     document.querySelector(".sr-result").classList.remove("hidden");
   },
+  },
   watch: {
     isStripeLoaded(newVal, oldVal) {
       if (newVal === true) {
