@@ -13,5 +13,8 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [{ "source": "/pricing/free-trial", "destination": "/api/create-setup-intent" }]
+  "rewrites": [
+    { "source": "/pricing/free-trial", "destination": "/api/create-setup-intent" },
+    { "source": "/pricing/free-trial", "destination": "/api/hello-world" }
+  ]
 }
