@@ -61,17 +61,20 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const res = await this.getSetupIntent()
+      // const res = await this.getSetupIntent()
 
-      const setupIntent = await res.json()
-      console.log({ setupIntent })
+      // const setupIntent = await res.json()
+      console.log({ setupIntent: this.setupIntent })
 
-      const confirmationResult = await this.stripe.confirmCardSetup(setupIntent.client_secret, {
-        payment_method: {
-          card: this.card,
-          billing_details: { email: this.email },
-        },
-      })
+      const confirmationResult = await this.stripe.confirmCardSetup(
+        this.setupIntent.client_secret,
+        {
+          payment_method: {
+            card: this.card,
+            billing_details: { email: this.email },
+          },
+        }
+      )
       console.log({ confirmationResult })
 
       if (confirmationResult.error) {
@@ -80,7 +83,7 @@ export default {
         displayError.textContent = result.error.message
       } else {
         document.querySelector(".sr-result").classList.remove("hidden")
-        const res = await this.subscribeFreeTrial(setupIntent)
+        const res = await this.subscribeFreeTrial(this.setupIntent)
         const { status } = await res.json()
         if (status === "success") {
           console.log("The user is successfully subbed")
