@@ -51,6 +51,9 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      console.log("============================================")
+      console.log(this.setupIntent)
+      console.log("============================================")
       this.stripe
         .confirmCardSetup(this.setupIntent.client_secret, {
           payment_method: {
