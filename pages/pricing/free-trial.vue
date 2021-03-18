@@ -51,11 +51,21 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      const res = await fetch("/api/create-setup-intent", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      const setupIntent = res.json()
+
       console.log("============================================")
-      console.log(this.setupIntent)
+      console.log(setupIntent)
       console.log("============================================")
+
       this.stripe
-        .confirmCardSetup(this.setupIntent.client_secret, {
+        .confirmCardSetup(setupIntent.client_secret, {
           payment_method: {
             card: this.card,
             billing_details: { email: this.email },
@@ -102,7 +112,7 @@ export default {
 
         this.card.mount("#card-element")
 
-        this.getSetupIntent()
+        // this.getSetupIntent()
       }
     },
   },
