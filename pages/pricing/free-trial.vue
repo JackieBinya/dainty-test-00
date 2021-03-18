@@ -2,21 +2,30 @@
   <div class="free-trial">
     <div class="free-trial_inner">
       <div class="free-trial_action">
-        <h2>Simplified customer service</h2>
-        <p>
-          An all-in-one customer service platform that helps you balance everything your customers
-          need to be happy.
-        </p>
-        <form @submit.prevent="handleSubmit">
-          <input type="email" placeholder="Work Email*" required v-model="email" />
-          <div v-show="isStripeLoaded" id="card-element">
-            <!-- A Stripe card Element will be inserted here. -->
+        <div class="set-up-email-step" v-if="showFirstStep">
+          <h2>Simplified customer service</h2>
+          <p>
+            An all-in-one customer service platform that helps you balance everything your customers
+            need to be happy.
+          </p>
+          <form @submit.prevent="getSetupIntent">
+            <input type="email" placeholder="Work Email*" required v-model="email" />
+            <input type="submit" value="15 Day Free Plan" />
+          </form>
+        </div>
+
+        <div v-else>
+          <form @submit.prevent="handleSubmit">
+            <input type="email" placeholder="Work Email*" value="email" />
+            <div v-show="isStripeLoaded" id="card-element">
+              <!-- A Stripe card Element will be inserted here. -->
+            </div>
+            <div id="card-errors" role="alert"></div>
+            <input type="submit" value="Link your card" />
+          </form>
+          <div class="sr-result hidden">
+            <p>Card setup completed<br /></p>
           </div>
-          <div id="card-errors" role="alert"></div>
-          <input type="submit" value="Link your card" />
-        </form>
-        <div class="sr-result hidden">
-          <p>Card setup completed<br /></p>
         </div>
       </div>
     </div>
@@ -33,6 +42,7 @@ export default {
       stripe: "",
       setupIntent: {},
       card: null,
+      showFirstStep: true,
     }
   },
   head() {
@@ -70,7 +80,6 @@ export default {
         displayError.textContent = result.error.message
       } else {
         document.querySelector(".sr-result").classList.remove("hidden")
-        await this.updateCustomerEmail(setupIntent, this.email)
         const res = await this.subscribeFreeTrial(setupIntent)
         const { status } = await res.json()
         if (status === "success") {
@@ -81,13 +90,26 @@ export default {
     helloWorld() {
       console.log("Hello World")
     },
-    getSetupIntent() {
-      return fetch("/api/create-setup-intent", {
+    async getSetupIntent() {
+      const res = await fetch("/api/create-setup-intent", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ email }),
       })
+
+      this.setupIntent = await res.json()
+
+      this.showFirstStep = false
+
+      return
+      // return fetch("/api/create-setup-intent", {
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // })
     },
     subscribeFreeTrial({ customer }) {
       return fetch("/api/subscriptions", {
