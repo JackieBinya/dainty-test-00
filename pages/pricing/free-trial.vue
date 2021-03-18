@@ -58,7 +58,7 @@ export default {
         },
       })
         .then((res) => {
-          return res.json
+          return res.json()
         })
         .then((setupIntent) => {
           console.log(setupIntent)
