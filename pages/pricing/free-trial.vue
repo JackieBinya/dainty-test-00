@@ -77,7 +77,7 @@ export default {
                 displayError.textContent = result.error.message
               } else {
                 // The PaymentMethod was successfully set up
-                orderComplete(this.setupIntent.client_secret)
+                this.orderComplete(setupIntent.client_secret)
               }
             })
         })
@@ -121,7 +121,10 @@ export default {
           this.setupIntent = result
         })
     },
-    orderComplete() {
+    orderComplete(clientSecret) {
+      console.log("===============================")
+      console.log(clientSecret)
+      console.log("===============================")
       document.querySelector(".sr-result").classList.remove("hidden")
     },
   },
