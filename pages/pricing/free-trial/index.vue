@@ -10,7 +10,7 @@
           </p>
           <form @submit.prevent="getSetupIntent">
             <input type="email" placeholder="Work Email*" required v-model="email" />
-            <input type="submit" value="15 Day Free Plan" />
+            <input type="submit" value="Proceed" />
           </form>
         </div>
       </div>
@@ -20,20 +20,6 @@
 
 <script>
 export default {
-  // head() {
-  //   return {
-  //     script: [
-  //       {
-  //         hid: "stripe",
-  //         src: "https://js.stripe.com/v3/",
-  //         defer: true,
-  //         callback: () => {
-  //           this.isStripeLoaded = true
-  //         },
-  //       },
-  //     ],
-  //   }
-  // },
   computed: {
     email: {
       get() {
@@ -55,10 +41,6 @@ export default {
       })
 
       const setupIntent = await res.json()
-
-      console.log("**************************")
-      console.log(setupIntent)
-      console.log("**************************")
 
       this.$store.commit("updateSetupIntent", setupIntent)
 

@@ -19,7 +19,6 @@
         </div>
       </div>
     </div>
-    <!-- <p v-else>Loading...</p> -->
   </div>
 </template>
 
@@ -33,20 +32,6 @@ export default {
       showFirstStep: true,
     }
   },
-  // head() {
-  //   return {
-  //     script: [
-  //       {
-  //         hid: "stripe",
-  //         src: "https://js.stripe.com/v3/",
-  //         defer: true,
-  //         callback: () => {
-  //           this.isStripeLoaded = true
-  //         },
-  //       },
-  //     ],
-  //   }
-  // },
   mounted() {
     this.stripe = Stripe(process.env.stripePublishableKey)
     const elements = this.stripe.elements()
@@ -75,12 +60,6 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      // const stripe = Stripe(process.env.stripePublishableKey)
-      // const res = await this.getSetupIntent()
-
-      // const setupIntent = await res.json()
-      console.log({ setupIntent: this.setupIntent })
-
       const confirmationResult = await this.stripe.confirmCardSetup(
         this.setupIntent.client_secret,
         {
@@ -103,6 +82,10 @@ export default {
         if (status === "success") {
           console.log("The user is successfully subbed")
         }
+
+        this.$store.commit("updateEmail", "")
+
+         this.$store.commit("updateSetupIntent", {})
       }
     },
     subscribeFreeTrial({ customer }) {
@@ -113,45 +96,8 @@ export default {
         },
         body: JSON.stringify({ customer }),
       })
-    },
-    updateCustomerEmail({ customer: id }, email) {
-      console.log("============================")
-      console.log({ id })
-      console.log({ email })
-      console.log("=================================")
-      return fetch(`/api/customers/${id}`, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
-    },
-  },
-  watch: {
-    isStripeLoaded(newVal, oldVal) {
-      if (newVal === true) {
-        console.log("Stripe has been loaded")
-        /* eslint-disable-next-line */
-        this.stripe = Stripe(process.env.stripePublishableKey)
-        const elements = this.stripe.elements()
-        this.card = elements.create("card")
-
-        this.card.mount("#card-element")
-
-        // Element focus ring
-        this.card.on("focus", function () {
-          const el = document.getElementById("card-element")
-          el.classList.add("focused")
-        })
-
-        this.card.on("blur", function () {
-          const el = document.getElementById("card-element")
-          el.classList.remove("focused")
-        })
-      }
-    },
-  },
+    }
+  }
 }
 </script>
 
