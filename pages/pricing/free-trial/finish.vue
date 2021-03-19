@@ -49,7 +49,7 @@ export default {
   // },
   mounted() {
     this.stripe = Stripe(process.env.stripePublishableKey)
-    const elements = stripe.elements()
+    const elements = this.stripe.elements()
     this.card = elements.create("card")
 
     this.card.mount("#card-element")
