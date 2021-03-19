@@ -130,6 +130,7 @@ sr-root {
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
+  padding-top: 9rem;
 }
 .sr-main {
   display: flex;
@@ -139,7 +140,9 @@ sr-root {
   align-self: center;
   padding: 50px 50px 75px 50px;
   background: #fff;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   border-radius: 6px;
   box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1), 0px 2px 5px 0px rgba(50, 50, 93, 0.1),
     0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
