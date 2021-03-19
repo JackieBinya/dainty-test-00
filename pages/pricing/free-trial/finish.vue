@@ -1,6 +1,6 @@
 <template>
   <div class="free-trial">
-    <div v-if="isStripeLoaded">
+    <div>
       <div class="free-trial_inner">
         <div class="free-trial_action">
           <div>
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <p v-else>Loading...</p>
+    <!-- <p v-else>Loading...</p> -->
   </div>
 </template>
 
