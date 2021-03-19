@@ -1,22 +1,25 @@
 <template>
   <div class="free-trial">
-    <div class="free-trial_inner">
-      <div class="free-trial_action">
-        <div>
-          <form @submit.prevent="handleSubmit">
-            <input type="email" placeholder="Work Email*" :value="email" />
-            <div v-show="isStripeLoaded" id="card-element">
-              <!-- A Stripe card Element will be inserted here. -->
+    <div v-if="isStripeLoaded">
+      <div class="free-trial_inner">
+        <div class="free-trial_action">
+          <div>
+            <form @submit.prevent="handleSubmit">
+              <input type="email" placeholder="Work Email*" :value="email" />
+              <div id="card-element">
+                <!-- A Stripe card Element will be inserted here. -->
+              </div>
+              <div id="card-errors" role="alert"></div>
+              <input type="submit" value="Link your card" />
+            </form>
+            <div class="sr-result hidden">
+              <p>Card setup completed<br /></p>
             </div>
-            <div id="card-errors" role="alert"></div>
-            <input type="submit" value="Link your card" />
-          </form>
-          <div class="sr-result hidden">
-            <p>Card setup completed<br /></p>
           </div>
         </div>
       </div>
     </div>
+    <p v-else>Loading...</p>
   </div>
 </template>
 
