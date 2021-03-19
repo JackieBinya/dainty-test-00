@@ -46,10 +46,10 @@ export default {
   },
   computed: {
     email() {
-      return this.$store.email
+      return this.$store.state.email
     },
     setupIntent() {
-      return this.$store.setupIntent
+      return this.$store.state.setupIntent
     },
   },
   methods: {
