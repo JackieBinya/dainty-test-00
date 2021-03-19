@@ -126,11 +126,11 @@ export default {
   }
 
   input[type="submit"] {
-    border: 1px solid var(--acc-pink-color);
-    background: var(--acc-pink-color);
+    border: 1px solid var(--acc-purple-color);
+    background: var(--acc-purple-color);
     color: #fff;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
   }
 
