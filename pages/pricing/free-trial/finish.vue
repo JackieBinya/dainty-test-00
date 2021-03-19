@@ -48,7 +48,7 @@ export default {
   //   }
   // },
   mounted() {
-    const stripe = Stripe(process.env.stripePublishableKey)
+    this.stripe = Stripe(process.env.stripePublishableKey)
     const elements = stripe.elements()
     this.card = elements.create("card")
 
@@ -75,18 +75,21 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const stripe = Stripe(process.env.stripePublishableKey)
+      // const stripe = Stripe(process.env.stripePublishableKey)
       // const res = await this.getSetupIntent()
 
       // const setupIntent = await res.json()
       console.log({ setupIntent: this.setupIntent })
 
-      const confirmationResult = await stripe.confirmCardSetup(this.setupIntent.client_secret, {
-        payment_method: {
-          card: this.card,
-          billing_details: { email: this.email },
-        },
-      })
+      const confirmationResult = await this.stripe.confirmCardSetup(
+        this.setupIntent.client_secret,
+        {
+          payment_method: {
+            card: this.card,
+            billing_details: { email: this.email },
+          },
+        }
+      )
       console.log({ confirmationResult })
 
       if (confirmationResult.error) {
