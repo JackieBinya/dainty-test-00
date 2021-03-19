@@ -33,19 +33,37 @@ export default {
       showFirstStep: true,
     }
   },
-  head() {
-    return {
-      script: [
-        {
-          hid: "stripe",
-          src: "https://js.stripe.com/v3/",
-          defer: true,
-          callback: () => {
-            this.isStripeLoaded = true
-          },
-        },
-      ],
-    }
+  // head() {
+  //   return {
+  //     script: [
+  //       {
+  //         hid: "stripe",
+  //         src: "https://js.stripe.com/v3/",
+  //         defer: true,
+  //         callback: () => {
+  //           this.isStripeLoaded = true
+  //         },
+  //       },
+  //     ],
+  //   }
+  // },
+  mounted() {
+    const stripe = Stripe(process.env.stripePublishableKey)
+    const elements = stripe.elements()
+    this.card = elements.create("card")
+
+    this.card.mount("#card-element")
+
+    // Element focus ring
+    this.card.on("focus", function () {
+      const el = document.getElementById("card-element")
+      el.classList.add("focused")
+    })
+
+    this.card.on("blur", function () {
+      const el = document.getElementById("card-element")
+      el.classList.remove("focused")
+    })
   },
   computed: {
     email() {
@@ -57,20 +75,18 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      const stripe = Stripe(process.env.stripePublishableKey)
       // const res = await this.getSetupIntent()
 
       // const setupIntent = await res.json()
       console.log({ setupIntent: this.setupIntent })
 
-      const confirmationResult = await this.stripe.confirmCardSetup(
-        this.setupIntent.client_secret,
-        {
-          payment_method: {
-            card: this.card,
-            billing_details: { email: this.email },
-          },
-        }
-      )
+      const confirmationResult = await stripe.confirmCardSetup(this.setupIntent.client_secret, {
+        payment_method: {
+          card: this.card,
+          billing_details: { email: this.email },
+        },
+      })
       console.log({ confirmationResult })
 
       if (confirmationResult.error) {
