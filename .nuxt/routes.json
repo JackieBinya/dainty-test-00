@@ -51,9 +51,9 @@
   {
     "name": "pricing-free-trial",
     "path": "/pricing/free-trial",
-    "component": "/home/gwen/Desktop/dainty/pages/pricing/free-trial.vue",
-    "chunkName": "pages/pricing/free-trial",
-    "_name": "_21c7f717"
+    "component": "/home/gwen/Desktop/dainty/pages/pricing/free-trial/index.vue",
+    "chunkName": "pages/pricing/free-trial/index",
+    "_name": "_682e905a"
   },
   {
     "name": "subscription-cancel",
@@ -68,6 +68,13 @@
     "component": "/home/gwen/Desktop/dainty/pages/subscription/success.vue",
     "chunkName": "pages/subscription/success",
     "_name": "_c302cfec"
+  },
+  {
+    "name": "pricing-free-trial-finish",
+    "path": "/pricing/free-trial/finish",
+    "component": "/home/gwen/Desktop/dainty/pages/pricing/free-trial/finish.vue",
+    "chunkName": "pages/pricing/free-trial/finish",
+    "_name": "_8f43e48a"
   },
   {
     "name": "index",

@@ -2,21 +2,9 @@
   <div class="free-trial">
     <div class="free-trial_inner">
       <div class="free-trial_action">
-        <div class="set-up-email-step" v-if="showFirstStep">
-          <h2>Simplified customer service</h2>
-          <p>
-            An all-in-one customer service platform that helps you balance everything your customers
-            need to be happy.
-          </p>
-          <form @submit.prevent="getSetupIntent">
-            <input type="email" placeholder="Work Email*" required v-model="email" />
-            <input type="submit" value="15 Day Free Plan" />
-          </form>
-        </div>
-
-        <div v-else>
+        <div>
           <form @submit.prevent="handleSubmit">
-            <input type="email" placeholder="Work Email*" value="email" />
+            <input type="email" placeholder="Work Email*" :value="email" />
             <div v-show="isStripeLoaded" id="card-element">
               <!-- A Stripe card Element will be inserted here. -->
             </div>
@@ -36,11 +24,8 @@
 export default {
   data() {
     return {
-      email: "",
-      error: "",
       isStripeLoaded: false,
       stripe: "",
-      setupIntent: {},
       card: null,
       showFirstStep: true,
     }
@@ -58,6 +43,14 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    email() {
+      return this.$store.email
+    },
+    setupIntent() {
+      return this.$store.setupIntent
+    },
   },
   methods: {
     async handleSubmit() {
@@ -79,8 +72,8 @@ export default {
 
       if (confirmationResult.error) {
         // changeLoadingState(false)
-        var displayError = document.getElementById("card-errors")
-        displayError.textContent = result.error.message
+        const displayError = document.getElementById("card-errors")
+        displayError.textContent = confirmationResult.error.message
       } else {
         document.querySelector(".sr-result").classList.remove("hidden")
         const res = await this.subscribeFreeTrial(this.setupIntent)
@@ -89,30 +82,6 @@ export default {
           console.log("The user is successfully subbed")
         }
       }
-    },
-    helloWorld() {
-      console.log("Hello World")
-    },
-    async getSetupIntent() {
-      const res = await fetch("/api/create-setup-intent", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: this.email }),
-      })
-
-      this.setupIntent = await res.json()
-
-      this.showFirstStep = false
-
-      return
-      // return fetch("/api/create-setup-intent", {
-      //   method: "post",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
     },
     subscribeFreeTrial({ customer }) {
       return fetch("/api/subscriptions", {
@@ -141,25 +110,23 @@ export default {
     isStripeLoaded(newVal, oldVal) {
       if (newVal === true) {
         console.log("Stripe has been loaded")
-        if (!showFirstStep) {
-          /* eslint-disable-next-line */
-          this.stripe = Stripe(process.env.stripePublishableKey)
-          const elements = this.stripe.elements()
-          this.card = elements.create("card")
+        /* eslint-disable-next-line */
+        this.stripe = Stripe(process.env.stripePublishableKey)
+        const elements = this.stripe.elements()
+        this.card = elements.create("card")
 
-          this.card.mount("#card-element")
+        this.card.mount("#card-element")
 
-          // Element focus ring
-          this.card.on("focus", function () {
-            var el = document.getElementById("card-element")
-            el.classList.add("focused")
-          })
+        // Element focus ring
+        this.card.on("focus", function () {
+          const el = document.getElementById("card-element")
+          el.classList.add("focused")
+        })
 
-          this.card.on("blur", function () {
-            var el = document.getElementById("card-element")
-            el.classList.remove("focused")
-          })
-        }
+        this.card.on("blur", function () {
+          const el = document.getElementById("card-element")
+          el.classList.remove("focused")
+        })
       }
     },
   },
