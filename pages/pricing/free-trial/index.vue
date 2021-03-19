@@ -56,6 +56,10 @@ export default {
 
       const setupIntent = await res.json()
 
+      console.log("**************************")
+      console.log(setupIntent)
+      console.log("**************************")
+
       this.$store.commit("updateSetupIntent", setupIntent)
 
       this.$router.push("/pricing/free-trial/finish")
