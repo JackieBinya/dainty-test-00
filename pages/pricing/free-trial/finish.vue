@@ -1,28 +1,30 @@
 <template>
-  <div class="sr-root">
-    <div class="sr-main">
-      <div>
-        <form @submit.prevent="handleSubmit" class="sr-payment-form card">
-          <div class="sr-form-row">
-            <label> Account details </label>
-            <input type="email" placeholder="Work Email*" :value="email" />
-          </div>
-
-          <div class="sr-form-row">
-            <label> Payment details </label>
-            <div id="card-element">
-              <!-- A Stripe card Element will be inserted here. -->
+  <div class="free-trial-finish">
+    <div class="sr-root">
+      <div class="sr-main">
+        <div>
+          <form @submit.prevent="handleSubmit" class="sr-payment-form card">
+            <div class="sr-form-row">
+              <label> Account details </label>
+              <input type="email" placeholder="Work Email*" :value="email" />
             </div>
+
+            <div class="sr-form-row">
+              <label> Payment details </label>
+              <div id="card-element">
+                <!-- A Stripe card Element will be inserted here. -->
+              </div>
+            </div>
+            <div class="sr-field-error" id="card-errors" role="alert"></div>
+            <!-- <input type="submit" value="Link your card" /> -->
+            <button type="submit">
+              <div class="spinner hidden" id="spinner"></div>
+              <span id="button-text">Link your card to your account</span>
+            </button>
+          </form>
+          <div class="sr-result hidden">
+            <p>Card setup completed<br /></p>
           </div>
-          <div class="sr-field-error" id="card-errors" role="alert"></div>
-          <!-- <input type="submit" value="Link your card" /> -->
-          <button type="submit">
-            <div class="spinner hidden" id="spinner"></div>
-            <span id="button-text">Link your card to your account</span>
-          </button>
-        </form>
-        <div class="sr-result hidden">
-          <p>Card setup completed<br /></p>
         </div>
       </div>
     </div>
@@ -110,14 +112,10 @@ export default {
 
 <style lang="scss" scoped>
 .free-trial {
-  width: 100%;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 6rem 0;
-
-  @screen md {
-    padding: 3rem 0;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: (translate(-50%, -50%));
 }
 sr-root {
   display: flex;
@@ -130,7 +128,6 @@ sr-root {
   height: auto;
   min-height: 100vh;
   margin: 0 auto;
-  padding-top: 9rem;
 }
 .sr-main {
   display: flex;
