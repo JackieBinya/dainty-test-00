@@ -111,7 +111,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.free-trial {
+.free-trial-finish {
   position: absolute;
   top: 50%;
   left: 50%;
