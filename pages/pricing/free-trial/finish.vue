@@ -33,6 +33,7 @@
 
 <script>
 export default {
+  layout: "stripe-payment-method-capture-layout",
   data() {
     return {
       isStripeLoaded: false,

@@ -1,78 +1,98 @@
-import Vue from 'vue'
+import Vue from "vue"
 
-import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
-import NuxtError from '../layouts/error.vue'
-import NuxtLoading from './components/nuxt-loading.vue'
-import NuxtBuildIndicator from './components/nuxt-build-indicator'
+import {
+  getMatchedComponentsInstances,
+  getChildrenComponentInstancesUsingFetch,
+  promisify,
+  globalHandleError,
+  urlJoin,
+  sanitizeComponent,
+} from "./utils"
+import NuxtError from "../layouts/error.vue"
+import NuxtLoading from "./components/nuxt-loading.vue"
+import NuxtBuildIndicator from "./components/nuxt-build-indicator"
 
-import '../assets/css/tailwind.css'
+import "../assets/css/tailwind.css"
 
-import '../assets/scss/styles.scss'
+import "../assets/scss/styles.scss"
 
-import '../assets/scss/themes.scss'
+import "../assets/scss/themes.scss"
 
-import '../assets/scss/fonts.scss'
+import "../assets/scss/fonts.scss"
 
-import '../node_modules/swiper/css/swiper.css'
+import "../node_modules/swiper/css/swiper.css"
 
-import '../node_modules/prismjs/themes/prism.css'
+import "../node_modules/prismjs/themes/prism.css"
 
-import _6f6c098b from '../layouts/default.vue'
-import _617f18f2 from '../layouts/stripe-checkout-layout.vue'
+import _6f6c098b from "../layouts/default.vue"
+import _617f18f2 from "../layouts/stripe-checkout-layout.vue"
+import _56bbee28 from "../layouts/stripe-payment-method-capture-layout.vue"
 
-const layouts = { "_default": sanitizeComponent(_6f6c098b),"_stripe-checkout-layout": sanitizeComponent(_617f18f2) }
+const layouts = {
+  _default: sanitizeComponent(_6f6c098b),
+  "_stripe-checkout-layout": sanitizeComponent(_617f18f2),
+  "_stripe-payment-method-capture-layout": sanitizeComponent(_56bbee28),
+}
 
 export default {
-  render (h, props) {
-    const loadingEl = h('NuxtLoading', { ref: 'loading' })
+  render(h, props) {
+    const loadingEl = h("NuxtLoading", { ref: "loading" })
 
-    const layoutEl = h(this.layout || 'nuxt')
-    const templateEl = h('div', {
-      domProps: {
-        id: '__layout'
+    const layoutEl = h(this.layout || "nuxt")
+    const templateEl = h(
+      "div",
+      {
+        domProps: {
+          id: "__layout",
+        },
+        key: this.layoutName,
       },
-      key: this.layoutName
-    }, [layoutEl])
+      [layoutEl]
+    )
 
-    const transitionEl = h('transition', {
-      props: {
-        name: 'layout',
-        mode: 'out-in'
+    const transitionEl = h(
+      "transition",
+      {
+        props: {
+          name: "layout",
+          mode: "out-in",
+        },
+        on: {
+          beforeEnter(el) {
+            // Ensure to trigger scroll event after calling scrollBehavior
+            window.$nuxt.$nextTick(() => {
+              window.$nuxt.$emit("triggerScroll")
+            })
+          },
+        },
       },
-      on: {
-        beforeEnter (el) {
-          // Ensure to trigger scroll event after calling scrollBehavior
-          window.$nuxt.$nextTick(() => {
-            window.$nuxt.$emit('triggerScroll')
-          })
-        }
-      }
-    }, [templateEl])
+      [templateEl]
+    )
 
-    return h('div', {
-      domProps: {
-        id: '__nuxt'
-      }
-    }, [
-      loadingEl,
-      h(NuxtBuildIndicator),
-      transitionEl
-    ])
+    return h(
+      "div",
+      {
+        domProps: {
+          id: "__nuxt",
+        },
+      },
+      [loadingEl, h(NuxtBuildIndicator), transitionEl]
+    )
   },
 
   data: () => ({
     isOnline: true,
 
     layout: null,
-    layoutName: '',
+    layoutName: "",
 
-    nbFetching: 0
-    }),
+    nbFetching: 0,
+  }),
 
-  beforeCreate () {
-    Vue.util.defineReactive(this, 'nuxt', this.$options.nuxt)
+  beforeCreate() {
+    Vue.util.defineReactive(this, "nuxt", this.$options.nuxt)
   },
-  created () {
+  created() {
     // Add this.$nuxt in child instances
     this.$root.$options.$nuxt = this
 
@@ -82,8 +102,8 @@ export default {
 
       this.refreshOnlineStatus()
       // Setup the listeners
-      window.addEventListener('online', this.refreshOnlineStatus)
-      window.addEventListener('offline', this.refreshOnlineStatus)
+      window.addEventListener("online", this.refreshOnlineStatus)
+      window.addEventListener("offline", this.refreshOnlineStatus)
     }
     // Add $nuxt.error()
     this.error = this.nuxt.error
@@ -91,32 +111,32 @@ export default {
     this.context = this.$options.context
   },
 
-  async mounted () {
+  async mounted() {
     this.$loading = this.$refs.loading
   },
 
   watch: {
-    'nuxt.err': 'errorChanged'
+    "nuxt.err": "errorChanged",
   },
 
   computed: {
-    isOffline () {
+    isOffline() {
       return !this.isOnline
     },
 
-    isFetching () {
+    isFetching() {
       return this.nbFetching > 0
     },
 
-    isPreview () {
+    isPreview() {
       return Boolean(this.$options.previewData)
     },
   },
 
   methods: {
-    refreshOnlineStatus () {
+    refreshOnlineStatus() {
       if (process.client) {
-        if (typeof window.navigator.onLine === 'undefined') {
+        if (typeof window.navigator.onLine === "undefined") {
           // If the browser doesn't support connection status reports
           // assume that we are online because most apps' only react
           // when they now that the connection has been interrupted
@@ -127,7 +147,7 @@ export default {
       }
     },
 
-    async refresh () {
+    async refresh() {
       const pages = getMatchedComponentsInstances(this.$route)
 
       if (!pages.length) {
@@ -146,19 +166,20 @@ export default {
           p.push(page.$fetch())
         } else {
           // Get all component instance to call $fetch
-          for (const component of getChildrenComponentInstancesUsingFetch(page.$vnode.componentInstance)) {
+          for (const component of getChildrenComponentInstancesUsingFetch(
+            page.$vnode.componentInstance
+          )) {
             p.push(component.$fetch())
           }
         }
 
         if (page.$options.asyncData) {
           p.push(
-            promisify(page.$options.asyncData, this.context)
-              .then((newData) => {
-                for (const key in newData) {
-                  Vue.set(page.$data, key, newData[key])
-                }
-              })
+            promisify(page.$options.asyncData, this.context).then((newData) => {
+              for (const key in newData) {
+                Vue.set(page.$data, key, newData[key])
+              }
+            })
           )
         }
 
@@ -173,7 +194,7 @@ export default {
       }
       this.$loading.finish()
     },
-    errorChanged () {
+    errorChanged() {
       if (this.nuxt.err) {
         if (this.$loading) {
           if (this.$loading.fail) {
@@ -184,9 +205,9 @@ export default {
           }
         }
 
-        let errorLayout = (NuxtError.options || NuxtError).layout;
+        let errorLayout = (NuxtError.options || NuxtError).layout
 
-        if (typeof errorLayout === 'function') {
+        if (typeof errorLayout === "function") {
           errorLayout = errorLayout(this.context)
         }
 
@@ -194,27 +215,27 @@ export default {
       }
     },
 
-    setLayout (layout) {
-      if(layout && typeof layout !== 'string') {
-        throw new Error('[nuxt] Avoid using non-string value as layout property.')
+    setLayout(layout) {
+      if (layout && typeof layout !== "string") {
+        throw new Error("[nuxt] Avoid using non-string value as layout property.")
       }
 
-      if (!layout || !layouts['_' + layout]) {
-        layout = 'default'
+      if (!layout || !layouts["_" + layout]) {
+        layout = "default"
       }
       this.layoutName = layout
-      this.layout = layouts['_' + layout]
+      this.layout = layouts["_" + layout]
       return this.layout
     },
-    loadLayout (layout) {
-      if (!layout || !layouts['_' + layout]) {
-        layout = 'default'
+    loadLayout(layout) {
+      if (!layout || !layouts["_" + layout]) {
+        layout = "default"
       }
-      return Promise.resolve(layouts['_' + layout])
+      return Promise.resolve(layouts["_" + layout])
     },
   },
 
   components: {
-    NuxtLoading
-  }
+    NuxtLoading,
+  },
 }
