@@ -10,7 +10,22 @@
 </template>
 
 <script>
-export default {}
+export default {
+  head() {
+    return {
+      script: [
+        {
+          hid: "stripe",
+          src: "https://js.stripe.com/v3/",
+          defer: true,
+          callback: () => {
+            this.isStripeLoaded = true
+          },
+        },
+      ],
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>
