@@ -126,12 +126,17 @@ export default {
   }
 
   input[type="submit"] {
-    border: 1px solid var(--acc-purple-color);
-    background: var(--acc-purple-color);
-    color: #fff;
+    border: 2px solid var(--acc-purple-color);
+    color: var(--acc-purple-color);
     font-weight: 500;
     font-size: 16px;
     cursor: pointer;
+
+    &:hover {
+      border: 2px solid var(--acc-pink-color);
+      background: var(--acc-pink-color);
+      color: #fff;
+    }
   }
 
   .policy-agreement {

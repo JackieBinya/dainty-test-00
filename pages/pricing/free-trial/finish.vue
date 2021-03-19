@@ -247,7 +247,6 @@ label {
 
 /* Buttons and links */
 button {
-  background: var(--acc-purple-color);
   border-radius: 6px;
   color: white;
   border: 0;
