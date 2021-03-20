@@ -21,9 +21,6 @@ export default {
           hid: "stripe",
           src: "https://js.stripe.com/v3/",
           defer: true,
-          callback: () => {
-            this.isStripeLoaded = true
-          },
         },
       ],
     }

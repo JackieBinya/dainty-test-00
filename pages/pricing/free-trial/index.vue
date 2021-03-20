@@ -1,22 +1,34 @@
 <template>
   <div class="free-trial">
-    <h2>Core Plan - 15 Day Free Trial</h2>
+    <h2>15 Day Free Trial</h2>
     <div class="free-trial_inner">
       <div class="free-trial_content-wrapper">
         <div class="free-trial_content">
-          <form @submit.prevent="getSetupIntent" class="setup-intent-form">
-            <h1>Start your free trial</h1>
+          <form
+            @submit.prevent="getSetupIntent"
+            v-if="!showSetupIntentStep"
+            class="setup-intent-form"
+          >
+            <h4>Start your free trial</h4>
             <input type="text" placeholder="Full name*" required v-model="fullname" />
             <input type="email" placeholder="Work Email*" required v-model="email" />
-            <input type="submit" value="Proceed" />
+            <button type="submit">Proceed</button>
             <p class="policy-agreement">
               By clicking this button, you agree to our Terms, Privacy Policy and Security Policy.
             </p>
           </form>
+          <set-up-intent v-else />
         </div>
       </div>
 
       <div class="free-trial_content-side">
+        <div class="free-trial_content-side-headliner">
+          <div>
+            <h4>Core</h4>
+            <p>$99/month</p>
+          </div>
+        </div>
+
         <ul>
           <div>
             <li v-for="service in services.slice(0, 9)" :key="service.length">
@@ -38,13 +50,14 @@
 </template>
 
 <script>
+import SetUpIntent from "../../../components/free-trial/set-up-intent.vue"
 import checkIcon from "../../../components/home/plans/check-icon.vue"
 export default {
-  components: { checkIcon },
-  // layout: "stripe-payment-method-capture-layout",
+  components: { checkIcon, SetUpIntent },
   data() {
     return {
       fullname: "",
+      showSetupIntentStep: true,
       services: [
         "Unlimited concepts and revisions",
         "All source files",
@@ -77,7 +90,7 @@ export default {
     },
   },
   methods: {
-    async getSetupIntent() {
+    getSetupIntent() {
       const res = await fetch("/api/create-setup-intent", {
         method: "post",
         headers: {
@@ -90,7 +103,9 @@ export default {
 
       this.$store.commit("updateSetupIntent", setupIntent)
 
-      this.$router.push("/pricing/free-trial/finish")
+       this.showSetupIntentStep = true
+
+      // this.$router.push("/pricing/free-trial/finish")
     },
   },
 }
@@ -117,24 +132,15 @@ export default {
 
 .free-trial_content-wrapper {
   border-top: 1px solid #d5d5d5;
-  // position: relative;
-  // margin: 0 auto;
-  // width: 625px;
-  // background: white;
+  padding: 30px 70px 60px;
 }
 
 .setup-intent-form {
-  // padding: 30px 70px 60px;
-  // border-radius: 4px;
-  // box-shadow: 0 5px 30px 0 rgba(39, 63, 74, 0.15);
-  // min-height: 382px;
-  // padding: 40px 30px;
-  // position: relative;
-
   h1 {
-    font-size: 23px;
     font-weight: 500;
-    text-align: center;
+    margin-bottom: 8px;
+    @apply text-darkColor;
+    font-size: 23px;
   }
 
   input {
@@ -154,17 +160,17 @@ export default {
     border-radius: 3px;
   }
 
-  input[type="submit"] {
+  button[type="submit"] {
     border: 2px solid var(--acc-purple-color);
     border-radius: 8px;
-    color: var(--acc-purple-color);
+    padding: 0.75rem;
     font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-
+    @apply text-accentPurple;
+    margin-top: 1rem;
+    width: 220px;
     &:hover {
-      border: 2px solid var(--acc-pink-color);
       background: var(--acc-pink-color);
+      border: 2px solid transparent;
       color: #fff;
     }
   }
@@ -178,19 +184,11 @@ export default {
 .free-trial_content-side {
   border-top: 6px solid var(--acc-purple-color);
   padding: 30px 70px 60px;
-  // border-radius: 4px;
   box-shadow: 0 5px 30px 0 rgba(39, 63, 74, 0.15);
-  // position: absolute;
-  // right: 30px;
-  // top: 192px;
-  // ul {
-  //   display: flex;
-  //   justify-content: space-between;
-  // }
 
-  h3 {
-    font-size: 21px;
-    // @apply text-accentPurple;
+  &-headliner {
+    display: flex;
+    justify-content: center;
   }
 
   li {

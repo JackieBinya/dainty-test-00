@@ -4,6 +4,7 @@ export { default as Loader } from "../../components/loader.vue"
 export { default as Logo } from "../../components/logo.vue"
 export { default as PricingTable } from "../../components/pricing-table.vue"
 export { default as Testimomials } from "../../components/testimomials.vue"
+export { default as SetUpIntent } from "../../components/free-trial/set-up-intent.vue"
 export { default as AboutBody } from "../../components/about/about-body.vue"
 export { default as AboutHeader } from "../../components/about/about-header.vue"
 export { default as AboutInfo } from "../../components/about/about-info.vue"
@@ -11,6 +12,8 @@ export { default as AboutStarted } from "../../components/about/about-started.vu
 export { default as AboutTerms } from "../../components/about/about-terms.vue"
 export { default as AboutValues } from "../../components/about/about-values.vue"
 export { default as CollapseButton } from "../../components/about/collapse-button.vue"
+export { default as PortfolioBody } from "../../components/portfolio/portfolio-body.vue"
+export { default as PortfolioHeader } from "../../components/portfolio/portfolio-header.vue"
 export { default as BannerSection } from "../../components/home/banner-section.vue"
 export { default as CallToAction } from "../../components/home/call-to-action.vue"
 export { default as FeaturesSection } from "../../components/home/features-section.vue"
@@ -18,11 +21,6 @@ export { default as MediaSection } from "../../components/home/media-section.vue
 export { default as PortfolioExamples } from "../../components/home/portfolio-examples.vue"
 export { default as PricingCards } from "../../components/home/pricing-cards.vue"
 export { default as ServicesSection } from "../../components/home/services-section.vue"
-export { default as PortfolioBody } from "../../components/portfolio/portfolio-body.vue"
-export { default as PortfolioHeader } from "../../components/portfolio/portfolio-header.vue"
-export { default as IgIcon } from "../../components/social-icons/ig-icon.vue"
-export { default as LinkedinIcon } from "../../components/social-icons/linkedin-icon.vue"
-export { default as TwitterIcon } from "../../components/social-icons/twitter-icon.vue"
 export { default as CheckoutButton } from "../../components/pricing/checkout-button.vue"
 export { default as GetStarted } from "../../components/pricing/get-started.vue"
 export { default as PricingCardsV2 } from "../../components/pricing/pricing-cards-v2.vue"
@@ -30,18 +28,21 @@ export { default as PricingDiscount } from "../../components/pricing/pricing-dis
 export { default as PricingSupport } from "../../components/pricing/pricing-support.vue"
 export { default as Services } from "../../components/pricing/services.vue"
 export { default as SubscriptionPrice } from "../../components/pricing/subscription-price.vue"
+export { default as IgIcon } from "../../components/social-icons/ig-icon.vue"
+export { default as LinkedinIcon } from "../../components/social-icons/linkedin-icon.vue"
+export { default as TwitterIcon } from "../../components/social-icons/twitter-icon.vue"
 export { default as ContactSection } from "../../components/team/contact-section.vue"
 export { default as SectionHeader } from "../../components/team/section-header.vue"
 export { default as TeamList } from "../../components/team/team-list.vue"
 export { default as TeamMemberCard } from "../../components/team/team-member-card.vue"
 export { default as TeamMember } from "../../components/team/team-member.vue"
 export { default as TeamSwiper } from "../../components/team/team-swiper.vue"
+export { default as CheckIcon } from "../../components/home/plans/check-icon.vue"
+export { default as CrossIcon } from "../../components/home/plans/cross-icon.vue"
 export { default as Heading } from "../../components/home/reviews/heading.vue"
 export { default as ReviewContent } from "../../components/home/reviews/review-content.vue"
 export { default as Reviews } from "../../components/home/reviews/reviews.vue"
 export { default as Star } from "../../components/home/reviews/star.vue"
-export { default as CheckIcon } from "../../components/home/plans/check-icon.vue"
-export { default as CrossIcon } from "../../components/home/plans/cross-icon.vue"
 export { default as Field } from "../../components/pricing/pre-checkout/field.vue"
 export { default as Toggle } from "../../components/pricing/pre-checkout/toggle.vue"
 
@@ -62,6 +63,9 @@ export const LazyPricingTable = import(
 ).then((c) => c.default || c)
 export const LazyTestimomials = import(
   "../../components/testimomials.vue" /* webpackChunkName: "components/testimomials" */
+).then((c) => c.default || c)
+export const LazySetUpIntent = import(
+  "../../components/free-trial/set-up-intent.vue" /* webpackChunkName: "components/set-up-intent" */
 ).then((c) => c.default || c)
 export const LazyAboutBody = import(
   "../../components/about/about-body.vue" /* webpackChunkName: "components/about-body" */
@@ -84,6 +88,12 @@ export const LazyAboutValues = import(
 export const LazyCollapseButton = import(
   "../../components/about/collapse-button.vue" /* webpackChunkName: "components/collapse-button" */
 ).then((c) => c.default || c)
+export const LazyPortfolioBody = import(
+  "../../components/portfolio/portfolio-body.vue" /* webpackChunkName: "components/portfolio-body" */
+).then((c) => c.default || c)
+export const LazyPortfolioHeader = import(
+  "../../components/portfolio/portfolio-header.vue" /* webpackChunkName: "components/portfolio-header" */
+).then((c) => c.default || c)
 export const LazyBannerSection = import(
   "../../components/home/banner-section.vue" /* webpackChunkName: "components/banner-section" */
 ).then((c) => c.default || c)
@@ -104,21 +114,6 @@ export const LazyPricingCards = import(
 ).then((c) => c.default || c)
 export const LazyServicesSection = import(
   "../../components/home/services-section.vue" /* webpackChunkName: "components/services-section" */
-).then((c) => c.default || c)
-export const LazyPortfolioBody = import(
-  "../../components/portfolio/portfolio-body.vue" /* webpackChunkName: "components/portfolio-body" */
-).then((c) => c.default || c)
-export const LazyPortfolioHeader = import(
-  "../../components/portfolio/portfolio-header.vue" /* webpackChunkName: "components/portfolio-header" */
-).then((c) => c.default || c)
-export const LazyIgIcon = import(
-  "../../components/social-icons/ig-icon.vue" /* webpackChunkName: "components/ig-icon" */
-).then((c) => c.default || c)
-export const LazyLinkedinIcon = import(
-  "../../components/social-icons/linkedin-icon.vue" /* webpackChunkName: "components/linkedin-icon" */
-).then((c) => c.default || c)
-export const LazyTwitterIcon = import(
-  "../../components/social-icons/twitter-icon.vue" /* webpackChunkName: "components/twitter-icon" */
 ).then((c) => c.default || c)
 export const LazyCheckoutButton = import(
   "../../components/pricing/checkout-button.vue" /* webpackChunkName: "components/checkout-button" */
@@ -141,6 +136,15 @@ export const LazyServices = import(
 export const LazySubscriptionPrice = import(
   "../../components/pricing/subscription-price.vue" /* webpackChunkName: "components/subscription-price" */
 ).then((c) => c.default || c)
+export const LazyIgIcon = import(
+  "../../components/social-icons/ig-icon.vue" /* webpackChunkName: "components/ig-icon" */
+).then((c) => c.default || c)
+export const LazyLinkedinIcon = import(
+  "../../components/social-icons/linkedin-icon.vue" /* webpackChunkName: "components/linkedin-icon" */
+).then((c) => c.default || c)
+export const LazyTwitterIcon = import(
+  "../../components/social-icons/twitter-icon.vue" /* webpackChunkName: "components/twitter-icon" */
+).then((c) => c.default || c)
 export const LazyContactSection = import(
   "../../components/team/contact-section.vue" /* webpackChunkName: "components/contact-section" */
 ).then((c) => c.default || c)
@@ -159,6 +163,12 @@ export const LazyTeamMember = import(
 export const LazyTeamSwiper = import(
   "../../components/team/team-swiper.vue" /* webpackChunkName: "components/team-swiper" */
 ).then((c) => c.default || c)
+export const LazyCheckIcon = import(
+  "../../components/home/plans/check-icon.vue" /* webpackChunkName: "components/check-icon" */
+).then((c) => c.default || c)
+export const LazyCrossIcon = import(
+  "../../components/home/plans/cross-icon.vue" /* webpackChunkName: "components/cross-icon" */
+).then((c) => c.default || c)
 export const LazyHeading = import(
   "../../components/home/reviews/heading.vue" /* webpackChunkName: "components/heading" */
 ).then((c) => c.default || c)
@@ -170,12 +180,6 @@ export const LazyReviews = import(
 ).then((c) => c.default || c)
 export const LazyStar = import(
   "../../components/home/reviews/star.vue" /* webpackChunkName: "components/star" */
-).then((c) => c.default || c)
-export const LazyCheckIcon = import(
-  "../../components/home/plans/check-icon.vue" /* webpackChunkName: "components/check-icon" */
-).then((c) => c.default || c)
-export const LazyCrossIcon = import(
-  "../../components/home/plans/cross-icon.vue" /* webpackChunkName: "components/cross-icon" */
 ).then((c) => c.default || c)
 export const LazyField = import(
   "../../components/pricing/pre-checkout/field.vue" /* webpackChunkName: "components/field" */

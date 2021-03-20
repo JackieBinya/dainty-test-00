@@ -43,7 +43,7 @@ export default {
     }
   },
   mounted() {
-    this.stripe = Stripe(process.env.stripePublishableKey)
+    // this.stripe = Stripe(process.env.stripePublishableKey)
     const elements = this.stripe.elements()
     this.card = elements.create("card")
 
@@ -79,7 +79,6 @@ export default {
           },
         }
       )
-      console.log({ confirmationResult })
 
       if (confirmationResult.error) {
         // changeLoadingState(false)
