@@ -41,10 +41,10 @@
 </template>
 
 <script>
-import Loader from "../loader.vue"
+import loader from "../loader.vue"
 export default {
   components: {
-    Loader,
+    loader,
   },
   data() {
     return {
