@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       fullname: "",
-      showSetupIntentStep: true,
+      showSetupIntentStep: false,
       services: [
         "Unlimited concepts and revisions",
         "All source files",
