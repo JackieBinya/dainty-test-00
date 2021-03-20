@@ -22,7 +22,6 @@
               </div>
             </div>
             <div class="sr-field-error" id="card-errors" role="alert"></div>
-            <!-- <input type="submit" value="Link your card" /> -->
             <button type="submit" :disabled="isLoading">
               <span id="button-text"> Link your card to your account </span>
               <loader v-if="isLoading" class="animate-spin h-5 w-10 mr-3" />
@@ -163,6 +162,10 @@ export default {
 
   .input-field {
     margin-top: 1rem;
+  }
+
+  .sr-field-error {
+    color: red;
   }
 
   button {
