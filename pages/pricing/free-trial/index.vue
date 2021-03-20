@@ -55,10 +55,10 @@
 <script>
 import SetUpIntent from "../../../components/free-trial/set-up-intent.vue"
 import checkIcon from "../../../components/home/plans/check-icon.vue"
-import Loader from "../../components/loader.vue"
+import loader from "../../components/loader.vue"
 
 export default {
-  components: { checkIcon, SetUpIntent, Loader },
+  components: { checkIcon, SetUpIntent, loader },
   data() {
     return {
       fullname: "",
