@@ -4,7 +4,12 @@
       <div>
         <div>
           <form @submit.prevent="handleSubmit">
-            <h4>Some Heading</h4>
+            <div class="setup-intent-form-heading">
+              <h4>Some Heading</h4>
+              <div role="button" @click="toggleShowSetupIntent">
+                <back-arrow />
+              </div>
+            </div>
             <div>
               <label> Account details </label>
               <input type="email" :value="email" />
@@ -34,10 +39,11 @@
 
 <script>
 export default {
-  layout: "stripe-payment-method-capture-layout",
+  // components:{
+  //   BackArrow
+  // },
   data() {
     return {
-      isStripeLoaded: false,
       stripe: "",
       card: null,
     }
@@ -124,6 +130,9 @@ export default {
         body: JSON.stringify({ customer }),
       })
     },
+    toggleShowSetupIntent() {
+      this.$emit("closeSetupIntent")
+    },
   },
 }
 </script>
@@ -131,6 +140,11 @@ export default {
 <style lang="scss" scoped>
 .setup-intent {
   position: relative;
+
+  &-form-heading {
+    display: flex;
+    justify-content: space-between;
+  }
 
   label {
     // display: inline-block;

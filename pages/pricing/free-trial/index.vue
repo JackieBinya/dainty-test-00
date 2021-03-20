@@ -17,7 +17,7 @@
               By clicking this button, you agree to our Terms, Privacy Policy and Security Policy.
             </p>
           </form>
-          <set-up-intent v-else />
+          <set-up-intent v-else v-on:closeSetupIntent="closeSetupIntentStep" />
         </div>
       </div>
 
@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       fullname: "",
-      showSetupIntentStep: false,
+      showSetupIntentStep: true,
       services: [
         "Unlimited concepts and revisions",
         "All source files",
@@ -106,6 +106,9 @@ export default {
       this.showSetupIntentStep = true
 
       // this.$router.push("/pricing/free-trial/finish")
+    },
+    closeSetupIntentStep() {
+      this.showSetupIntentStep = false
     },
   },
 }

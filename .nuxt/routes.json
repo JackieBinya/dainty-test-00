@@ -3,72 +3,84 @@
     "name": "about",
     "path": "/about",
     "component": "/home/gwen/Desktop/dainty/pages/about.vue",
-    "chunkName": "pages/about"
+    "chunkName": "pages/about",
+    "_name": "_1d34d4e4"
   },
   {
     "name": "checkout",
     "path": "/checkout",
     "component": "/home/gwen/Desktop/dainty/pages/checkout.vue",
-    "chunkName": "pages/checkout"
+    "chunkName": "pages/checkout",
+    "_name": "_21d3e33f"
   },
   {
     "name": "portfolio",
     "path": "/portfolio",
     "component": "/home/gwen/Desktop/dainty/pages/portfolio.vue",
-    "chunkName": "pages/portfolio"
+    "chunkName": "pages/portfolio",
+    "_name": "_62e8a99f"
   },
   {
     "name": "pricing",
     "path": "/pricing",
     "component": "/home/gwen/Desktop/dainty/pages/pricing/index.vue",
-    "chunkName": "pages/pricing/index"
+    "chunkName": "pages/pricing/index",
+    "_name": "_9efa34c0"
   },
   {
     "name": "team",
     "path": "/team",
     "component": "/home/gwen/Desktop/dainty/pages/team.vue",
-    "chunkName": "pages/team"
+    "chunkName": "pages/team",
+    "_name": "_34a4cd56"
   },
   {
     "name": "web-development",
     "path": "/web-development",
     "component": "/home/gwen/Desktop/dainty/pages/web-development.vue",
-    "chunkName": "pages/web-development"
+    "chunkName": "pages/web-development",
+    "_name": "_7b3daf4e"
   },
   {
     "name": "welcome",
     "path": "/welcome",
     "component": "/home/gwen/Desktop/dainty/pages/welcome.vue",
-    "chunkName": "pages/welcome"
+    "chunkName": "pages/welcome",
+    "_name": "_b9b1f30e"
   },
   {
     "name": "pricing-free-trial",
     "path": "/pricing/free-trial",
     "component": "/home/gwen/Desktop/dainty/pages/pricing/free-trial/index.vue",
-    "chunkName": "pages/pricing/free-trial/index"
+    "chunkName": "pages/pricing/free-trial/index",
+    "_name": "_682e905a"
   },
   {
     "name": "subscription-cancel",
     "path": "/subscription/cancel",
     "component": "/home/gwen/Desktop/dainty/pages/subscription/cancel.vue",
-    "chunkName": "pages/subscription/cancel"
+    "chunkName": "pages/subscription/cancel",
+    "_name": "_392cc97a"
   },
   {
     "name": "subscription-success",
     "path": "/subscription/success",
     "component": "/home/gwen/Desktop/dainty/pages/subscription/success.vue",
-    "chunkName": "pages/subscription/success"
+    "chunkName": "pages/subscription/success",
+    "_name": "_c302cfec"
   },
   {
     "name": "pricing-free-trial-finish",
     "path": "/pricing/free-trial/finish",
     "component": "/home/gwen/Desktop/dainty/pages/pricing/free-trial/finish.vue",
-    "chunkName": "pages/pricing/free-trial/finish"
+    "chunkName": "pages/pricing/free-trial/finish",
+    "_name": "_8f43e48a"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/home/gwen/Desktop/dainty/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_3cecafa9"
   }
 ]

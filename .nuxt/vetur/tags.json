@@ -35,12 +35,6 @@
   "LazyTestimomials": {
     "description": "Auto imported from /components/testimomials.vue"
   },
-  "SetUpIntent": {
-    "description": "Auto imported from /components/free-trial/set-up-intent.vue"
-  },
-  "LazySetUpIntent": {
-    "description": "Auto imported from /components/free-trial/set-up-intent.vue"
-  },
   "AboutBody": {
     "description": "Auto imported from /components/about/about-body.vue"
   },
@@ -83,17 +77,17 @@
   "LazyCollapseButton": {
     "description": "Auto imported from /components/about/collapse-button.vue"
   },
-  "PortfolioBody": {
-    "description": "Auto imported from /components/portfolio/portfolio-body.vue"
+  "BackArrow": {
+    "description": "Auto imported from /components/free-trial/back-arrow.vue"
   },
-  "LazyPortfolioBody": {
-    "description": "Auto imported from /components/portfolio/portfolio-body.vue"
+  "LazyBackArrow": {
+    "description": "Auto imported from /components/free-trial/back-arrow.vue"
   },
-  "PortfolioHeader": {
-    "description": "Auto imported from /components/portfolio/portfolio-header.vue"
+  "SetUpIntent": {
+    "description": "Auto imported from /components/free-trial/set-up-intent.vue"
   },
-  "LazyPortfolioHeader": {
-    "description": "Auto imported from /components/portfolio/portfolio-header.vue"
+  "LazySetUpIntent": {
+    "description": "Auto imported from /components/free-trial/set-up-intent.vue"
   },
   "BannerSection": {
     "description": "Auto imported from /components/home/banner-section.vue"
@@ -136,6 +130,18 @@
   },
   "LazyServicesSection": {
     "description": "Auto imported from /components/home/services-section.vue"
+  },
+  "PortfolioBody": {
+    "description": "Auto imported from /components/portfolio/portfolio-body.vue"
+  },
+  "LazyPortfolioBody": {
+    "description": "Auto imported from /components/portfolio/portfolio-body.vue"
+  },
+  "PortfolioHeader": {
+    "description": "Auto imported from /components/portfolio/portfolio-header.vue"
+  },
+  "LazyPortfolioHeader": {
+    "description": "Auto imported from /components/portfolio/portfolio-header.vue"
   },
   "CheckoutButton": {
     "description": "Auto imported from /components/pricing/checkout-button.vue"

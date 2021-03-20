@@ -4,7 +4,6 @@ export { default as Loader } from "../../components/loader.vue"
 export { default as Logo } from "../../components/logo.vue"
 export { default as PricingTable } from "../../components/pricing-table.vue"
 export { default as Testimomials } from "../../components/testimomials.vue"
-export { default as SetUpIntent } from "../../components/free-trial/set-up-intent.vue"
 export { default as AboutBody } from "../../components/about/about-body.vue"
 export { default as AboutHeader } from "../../components/about/about-header.vue"
 export { default as AboutInfo } from "../../components/about/about-info.vue"
@@ -12,8 +11,8 @@ export { default as AboutStarted } from "../../components/about/about-started.vu
 export { default as AboutTerms } from "../../components/about/about-terms.vue"
 export { default as AboutValues } from "../../components/about/about-values.vue"
 export { default as CollapseButton } from "../../components/about/collapse-button.vue"
-export { default as PortfolioBody } from "../../components/portfolio/portfolio-body.vue"
-export { default as PortfolioHeader } from "../../components/portfolio/portfolio-header.vue"
+export { default as BackArrow } from "../../components/free-trial/back-arrow.vue"
+export { default as SetUpIntent } from "../../components/free-trial/set-up-intent.vue"
 export { default as BannerSection } from "../../components/home/banner-section.vue"
 export { default as CallToAction } from "../../components/home/call-to-action.vue"
 export { default as FeaturesSection } from "../../components/home/features-section.vue"
@@ -21,6 +20,8 @@ export { default as MediaSection } from "../../components/home/media-section.vue
 export { default as PortfolioExamples } from "../../components/home/portfolio-examples.vue"
 export { default as PricingCards } from "../../components/home/pricing-cards.vue"
 export { default as ServicesSection } from "../../components/home/services-section.vue"
+export { default as PortfolioBody } from "../../components/portfolio/portfolio-body.vue"
+export { default as PortfolioHeader } from "../../components/portfolio/portfolio-header.vue"
 export { default as CheckoutButton } from "../../components/pricing/checkout-button.vue"
 export { default as GetStarted } from "../../components/pricing/get-started.vue"
 export { default as PricingCardsV2 } from "../../components/pricing/pricing-cards-v2.vue"
@@ -64,9 +65,6 @@ export const LazyPricingTable = import(
 export const LazyTestimomials = import(
   "../../components/testimomials.vue" /* webpackChunkName: "components/testimomials" */
 ).then((c) => c.default || c)
-export const LazySetUpIntent = import(
-  "../../components/free-trial/set-up-intent.vue" /* webpackChunkName: "components/set-up-intent" */
-).then((c) => c.default || c)
 export const LazyAboutBody = import(
   "../../components/about/about-body.vue" /* webpackChunkName: "components/about-body" */
 ).then((c) => c.default || c)
@@ -88,11 +86,11 @@ export const LazyAboutValues = import(
 export const LazyCollapseButton = import(
   "../../components/about/collapse-button.vue" /* webpackChunkName: "components/collapse-button" */
 ).then((c) => c.default || c)
-export const LazyPortfolioBody = import(
-  "../../components/portfolio/portfolio-body.vue" /* webpackChunkName: "components/portfolio-body" */
+export const LazyBackArrow = import(
+  "../../components/free-trial/back-arrow.vue" /* webpackChunkName: "components/back-arrow" */
 ).then((c) => c.default || c)
-export const LazyPortfolioHeader = import(
-  "../../components/portfolio/portfolio-header.vue" /* webpackChunkName: "components/portfolio-header" */
+export const LazySetUpIntent = import(
+  "../../components/free-trial/set-up-intent.vue" /* webpackChunkName: "components/set-up-intent" */
 ).then((c) => c.default || c)
 export const LazyBannerSection = import(
   "../../components/home/banner-section.vue" /* webpackChunkName: "components/banner-section" */
@@ -114,6 +112,12 @@ export const LazyPricingCards = import(
 ).then((c) => c.default || c)
 export const LazyServicesSection = import(
   "../../components/home/services-section.vue" /* webpackChunkName: "components/services-section" */
+).then((c) => c.default || c)
+export const LazyPortfolioBody = import(
+  "../../components/portfolio/portfolio-body.vue" /* webpackChunkName: "components/portfolio-body" */
+).then((c) => c.default || c)
+export const LazyPortfolioHeader = import(
+  "../../components/portfolio/portfolio-header.vue" /* webpackChunkName: "components/portfolio-header" */
 ).then((c) => c.default || c)
 export const LazyCheckoutButton = import(
   "../../components/pricing/checkout-button.vue" /* webpackChunkName: "components/checkout-button" */
