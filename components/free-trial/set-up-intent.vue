@@ -28,7 +28,7 @@
             </button>
           </form>
           <div class="sr-result hidden">
-            <p>Card setup completed<br /></p>
+            <p>Card setup completed 🎊<br /></p>
           </div>
         </div>
       </div>
