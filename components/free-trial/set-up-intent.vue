@@ -112,7 +112,7 @@ export default {
         displayError.textContent = confirmationResult.error.message
       } else {
         this.isLoading = false
-        document.querySelector("setup-intent-form").classList.add("hidden")
+        document.querySelector(".setup-intent-form").classList.add("hidden")
         document.querySelector(".sr-result").classList.remove("hidden")
         const res = await this.subscribeFreeTrial(this.setupIntent)
         const { status } = await res.json()
