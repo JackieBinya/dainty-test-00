@@ -112,11 +112,12 @@ export default {
         displayError.textContent = confirmationResult.error.message
       } else {
         this.isLoading = false
+        const card = document.getElementById("card-item")
         document.querySelector(".sr-result").classList.remove("hidden")
         const res = await this.subscribeFreeTrial(this.setupIntent)
         const { status } = await res.json()
         if (status === "success") {
-          console.log("The user is successfully subbed")
+          card.style.display = "none"
         }
 
         // Reset the store
