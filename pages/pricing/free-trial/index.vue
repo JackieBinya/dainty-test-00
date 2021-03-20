@@ -132,7 +132,7 @@ export default {
 
 .free-trial_content-wrapper {
   border-top: 1px solid #d5d5d5;
-  padding: 30px 70px 60px;
+  padding: 30px 60px 60px;
 }
 
 .setup-intent-form {
