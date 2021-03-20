@@ -23,9 +23,12 @@
             </div>
             <div class="sr-field-error" id="card-errors" role="alert"></div>
             <!-- <input type="submit" value="Link your card" /> -->
-            <button type="submit">
+            <button type="submit" :disabled="isLoading">
               <div class="spinner hidden" id="spinner"></div>
-              <span id="button-text">Link your card to your account</span>
+              <span id="button-text">
+                Link your card to your account
+                <loader v-if="isLoading" class="animate-spin h-5 w-10 mr-3" />
+              </span>
             </button>
           </form>
           <div class="sr-result hidden">
@@ -38,14 +41,16 @@
 </template>
 
 <script>
+import Loader from "../loader.vue"
 export default {
-  // components:{
-  //   BackArrow
-  // },
+  components: {
+    Loader,
+  },
   data() {
     return {
       stripe: "",
       card: null,
+      isLoading: false,
     }
   },
   mounted() {
@@ -94,6 +99,7 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      this.isLoading = true
       const confirmationResult = await this.stripe.confirmCardSetup(
         this.setupIntent.client_secret,
         {
@@ -105,10 +111,11 @@ export default {
       )
 
       if (confirmationResult.error) {
-        // changeLoadingState(false)
+        this.isLoading = false
         const displayError = document.getElementById("card-errors")
         displayError.textContent = confirmationResult.error.message
       } else {
+        this.isLoading = false
         document.querySelector(".sr-result").classList.remove("hidden")
         const res = await this.subscribeFreeTrial(this.setupIntent)
         const { status } = await res.json()

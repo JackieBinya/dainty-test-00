@@ -12,7 +12,10 @@
             <h4>Start your free trial</h4>
             <input type="text" placeholder="Full name*" required v-model="fullname" />
             <input type="email" placeholder="Work Email*" required v-model="email" />
-            <button type="submit">Proceed</button>
+            <button type="submit" :disabled="isLoading">
+              Proceed
+              <loader v-if="isLoading" class="animate-spin h-5 w-10 mr-3" />
+            </button>
             <p class="policy-agreement">
               By clicking this button, you agree to our Terms, Privacy Policy and Security Policy.
             </p>
@@ -52,12 +55,15 @@
 <script>
 import SetUpIntent from "../../../components/free-trial/set-up-intent.vue"
 import checkIcon from "../../../components/home/plans/check-icon.vue"
+import Loader from "../../components/loader.vue"
+
 export default {
-  components: { checkIcon, SetUpIntent },
+  components: { checkIcon, SetUpIntent, Loader },
   data() {
     return {
       fullname: "",
       showSetupIntentStep: false,
+      isLoading: false,
       services: [
         "Unlimited concepts and revisions",
         "All source files",
@@ -91,6 +97,7 @@ export default {
   },
   methods: {
     async getSetupIntent() {
+      this.isLoading = true
       const res = await fetch("/api/create-setup-intent", {
         method: "post",
         headers: {
@@ -102,6 +109,8 @@ export default {
       const setupIntent = await res.json()
 
       this.$store.commit("updateSetupIntent", setupIntent)
+
+      this.isLoading = false
 
       this.showSetupIntentStep = true
 
