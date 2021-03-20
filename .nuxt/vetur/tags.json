@@ -131,6 +131,24 @@
   "LazyPortfolioHeader": {
     "description": "Auto imported from /components/portfolio/portfolio-header.vue"
   },
+  "IgIcon": {
+    "description": "Auto imported from /components/social-icons/ig-icon.vue"
+  },
+  "LazyIgIcon": {
+    "description": "Auto imported from /components/social-icons/ig-icon.vue"
+  },
+  "LinkedinIcon": {
+    "description": "Auto imported from /components/social-icons/linkedin-icon.vue"
+  },
+  "LazyLinkedinIcon": {
+    "description": "Auto imported from /components/social-icons/linkedin-icon.vue"
+  },
+  "TwitterIcon": {
+    "description": "Auto imported from /components/social-icons/twitter-icon.vue"
+  },
+  "LazyTwitterIcon": {
+    "description": "Auto imported from /components/social-icons/twitter-icon.vue"
+  },
   "CheckoutButton": {
     "description": "Auto imported from /components/pricing/checkout-button.vue"
   },
@@ -173,24 +191,6 @@
   "LazySubscriptionPrice": {
     "description": "Auto imported from /components/pricing/subscription-price.vue"
   },
-  "IgIcon": {
-    "description": "Auto imported from /components/social-icons/ig-icon.vue"
-  },
-  "LazyIgIcon": {
-    "description": "Auto imported from /components/social-icons/ig-icon.vue"
-  },
-  "LinkedinIcon": {
-    "description": "Auto imported from /components/social-icons/linkedin-icon.vue"
-  },
-  "LazyLinkedinIcon": {
-    "description": "Auto imported from /components/social-icons/linkedin-icon.vue"
-  },
-  "TwitterIcon": {
-    "description": "Auto imported from /components/social-icons/twitter-icon.vue"
-  },
-  "LazyTwitterIcon": {
-    "description": "Auto imported from /components/social-icons/twitter-icon.vue"
-  },
   "ContactSection": {
     "description": "Auto imported from /components/team/contact-section.vue"
   },
@@ -227,18 +227,6 @@
   "LazyTeamSwiper": {
     "description": "Auto imported from /components/team/team-swiper.vue"
   },
-  "CheckIcon": {
-    "description": "Auto imported from /components/home/plans/check-icon.vue"
-  },
-  "LazyCheckIcon": {
-    "description": "Auto imported from /components/home/plans/check-icon.vue"
-  },
-  "CrossIcon": {
-    "description": "Auto imported from /components/home/plans/cross-icon.vue"
-  },
-  "LazyCrossIcon": {
-    "description": "Auto imported from /components/home/plans/cross-icon.vue"
-  },
   "Heading": {
     "description": "Auto imported from /components/home/reviews/heading.vue"
   },
@@ -262,6 +250,18 @@
   },
   "LazyStar": {
     "description": "Auto imported from /components/home/reviews/star.vue"
+  },
+  "CheckIcon": {
+    "description": "Auto imported from /components/home/plans/check-icon.vue"
+  },
+  "LazyCheckIcon": {
+    "description": "Auto imported from /components/home/plans/check-icon.vue"
+  },
+  "CrossIcon": {
+    "description": "Auto imported from /components/home/plans/cross-icon.vue"
+  },
+  "LazyCrossIcon": {
+    "description": "Auto imported from /components/home/plans/cross-icon.vue"
   },
   "Field": {
     "description": "Auto imported from /components/pricing/pre-checkout/field.vue"
