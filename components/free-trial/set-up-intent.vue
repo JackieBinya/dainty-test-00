@@ -10,12 +10,12 @@
                 <back-arrow />
               </div>
             </div>
-            <div>
+            <div class="input-field">
               <label> Account details </label>
               <input type="email" :value="email" />
             </div>
 
-            <div>
+            <div class="input-field">
               <label> Payment details </label>
               <div id="card-element">
                 <!-- A Stripe card Element will be inserted here. -->
@@ -159,6 +159,10 @@ export default {
 
   input {
     display: block;
+  }
+
+  .input-field {
+    margin-top: 1rem;
   }
 
   button {

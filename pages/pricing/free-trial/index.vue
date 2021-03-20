@@ -62,7 +62,7 @@ export default {
   data() {
     return {
       fullname: "",
-      showSetupIntentStep: false,
+      showSetupIntentStep: true,
       isLoading: false,
       services: [
         "Unlimited concepts and revisions",
