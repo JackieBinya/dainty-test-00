@@ -94,6 +94,14 @@ export default {
         this.$store.commit("updateEmail", value)
       },
     },
+    fullname: {
+      get() {
+        return this.$store.state.fullname
+      },
+      set(value) {
+        this.$store.commit("updateFullname", value)
+      },
+    },
   },
   methods: {
     async getSetupIntent() {

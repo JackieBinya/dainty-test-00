@@ -119,8 +119,9 @@ export default {
           console.log("The user is successfully subbed")
         }
 
+        // Reset the store
         this.$store.commit("updateEmail", "")
-
+        this.$store.commit("updateFullname", "")
         this.$store.commit("updateSetupIntent", {})
       }
     },

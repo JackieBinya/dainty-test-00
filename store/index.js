@@ -2,6 +2,7 @@ export const state = () => ({
   menuIsActive: false,
   showOverlay: false,
   email: "",
+  fullname: "",
   setupIntent: {},
 })
 
@@ -16,6 +17,10 @@ export const mutations = {
 
   updateEmail(state, payload) {
     state.email = payload
+  },
+
+  updateFullname(state, payload) {
+    state.fullname = payload
   },
 
   updateSetupIntent(state, payload) {
