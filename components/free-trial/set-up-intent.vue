@@ -3,7 +3,7 @@
     <div>
       <div>
         <div>
-          <form @submit.prevent="handleSubmit">
+          <form class="setup-intent-form" @submit.prevent="handleSubmit">
             <div class="setup-intent-form-heading">
               <h4>Some Heading</h4>
               <div role="button" @click="toggleShowSetupIntent">
@@ -112,7 +112,7 @@ export default {
         displayError.textContent = confirmationResult.error.message
       } else {
         this.isLoading = false
-        document.getElementById("card-element").classList.add("hidden")
+        document.querySelector("setup-intent-form").classList.add("hidden")
         document.querySelector(".sr-result").classList.remove("hidden")
         const res = await this.subscribeFreeTrial(this.setupIntent)
         const { status } = await res.json()
