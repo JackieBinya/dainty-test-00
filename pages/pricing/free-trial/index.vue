@@ -90,7 +90,7 @@ export default {
     },
   },
   methods: {
-    getSetupIntent() {
+    async getSetupIntent() {
       const res = await fetch("/api/create-setup-intent", {
         method: "post",
         headers: {
@@ -103,7 +103,7 @@ export default {
 
       this.$store.commit("updateSetupIntent", setupIntent)
 
-       this.showSetupIntentStep = true
+      this.showSetupIntentStep = true
 
       // this.$router.push("/pricing/free-trial/finish")
     },
