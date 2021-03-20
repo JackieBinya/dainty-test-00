@@ -112,12 +112,12 @@ export default {
         displayError.textContent = confirmationResult.error.message
       } else {
         this.isLoading = false
-        const card = document.getElementById("card-item")
+        const el = document.getElementById("card-element")
         document.querySelector(".sr-result").classList.remove("hidden")
         const res = await this.subscribeFreeTrial(this.setupIntent)
         const { status } = await res.json()
         if (status === "success") {
-          card.style.display = "none"
+          el.style.display = "none"
         }
 
         // Reset the store
