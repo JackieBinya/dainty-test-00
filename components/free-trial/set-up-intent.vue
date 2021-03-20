@@ -24,11 +24,8 @@
             <div class="sr-field-error" id="card-errors" role="alert"></div>
             <!-- <input type="submit" value="Link your card" /> -->
             <button type="submit" :disabled="isLoading">
-              <div class="spinner hidden" id="spinner"></div>
-              <span id="button-text">
-                Link your card to your account
-                <loader v-if="isLoading" class="animate-spin h-5 w-10 mr-3" />
-              </span>
+              <span id="button-text"> Link your card to your account </span>
+              <loader v-if="isLoading" class="animate-spin h-5 w-10 mr-3" />
             </button>
           </form>
           <div class="sr-result hidden">
@@ -171,10 +168,21 @@ export default {
     font-weight: 500;
     @apply text-accentPurple;
     margin-top: 2rem;
-    &:hover {
+
+    svg {
+      display: inline-block;
+    }
+
+    &:hover,
+    &:active,
+    &:disabled {
       background: var(--acc-pink-color);
       border: 2px solid transparent;
       color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.8;
     }
   }
 }

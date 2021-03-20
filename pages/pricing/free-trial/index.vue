@@ -13,7 +13,7 @@
             <input type="text" placeholder="Full name*" required v-model="fullname" />
             <input type="email" placeholder="Work Email*" required v-model="email" />
             <button type="submit" :disabled="isLoading">
-              Proceed
+              <span>Proceed</span>
               <loader v-if="isLoading" class="animate-spin h-5 w-10 mr-3" />
             </button>
             <p class="policy-agreement">
@@ -180,10 +180,21 @@ export default {
     @apply text-accentPurple;
     margin-top: 1rem;
     width: 220px;
-    &:hover {
+
+    svg {
+      display: inline-block;
+    }
+
+    &:hover,
+    &:active,
+    &:disabled {
       background: var(--acc-pink-color);
       border: 2px solid transparent;
       color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.8;
     }
   }
 
